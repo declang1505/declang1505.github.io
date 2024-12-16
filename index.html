@@ -50,9 +50,10 @@
             justify-content: center;
         }
 
-        .profile-placeholder i {
-            font-size: 5em;
-            color: #666;
+        .profile-placeholder img {
+            width: 150px;
+            height: 150px;
+            border-radius: 15px;
         }
 
         section {
@@ -110,7 +111,6 @@
         .navbar {
             position: fixed;
             top: 10px;
-            width: 800px;
             left: 50%;
             transform: translateX(-50%);
             background-color: #262626;
@@ -122,6 +122,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            width: calc(100% - 20px); /* Adjust width to fit the screen with some margin */
+            max-width: 800px; /* Keep the original max width for larger screens */
+            box-sizing: border-box; /* Include padding in the width calculation */
         }
 
         .navbar .brand {
@@ -174,6 +177,18 @@
             display: flex;
             justify-content: center;
         }
+
+        /* Media Query for smaller screens */
+        @media (max-width: 600px) {
+            .navbar .brand {
+                font-size: 1em; /* Scale down brand text */
+                margin-left: 5px;
+            }
+            .navbar .linkedin {
+                font-size: 1.2em; /* Scale down LinkedIn icon */
+                margin-right: 5px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -190,7 +205,7 @@
             <p>An Aerospace Engineering Student from the South West.</p>
         </div>
         <div class="profile-placeholder">
-            <img src="https://i.imgur.com/JavpIXf.png" alt="Profile Photo" style="width: 150px; height: 150px; border-radius: 15px;">
+            <img src="https://i.imgur.com/JavpIXf.png" alt="Profile Photo">
         </div>
     </header>
     <section id="about">
@@ -256,4 +271,5 @@
     </script>
 </body>
 </html>
+
 
