@@ -44,15 +44,17 @@
             width: 150px;
             height: 150px;
             border-radius: 15px; /* Rounded edges */
-            background-color: #ccc;
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden; /* Ensure the image fits within the container */
         }
 
-        .profile-placeholder i {
-            font-size: 5em;
-            color: #666;
+        .profile-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the entire placeholder */
+            border-radius: 15px; /* Maintain the rounded edges */
         }
 
         section {
@@ -190,7 +192,7 @@
             <p>An Aerospace Engineering Student from the South West.</p>
         </div>
         <div class="profile-placeholder">
-            <img src="memeoji.png" alt="Profile Photo" style="width: 150px; height: 150px; border-radius: 15px;">
+            <img src="profile-photo.png" alt="Profile Photo" style="width: 150px; height: 150px; border-radius: 15px;">
         </div>
     </header>
     <section id="about">
@@ -250,9 +252,4 @@
         function toggleDropdown() {
             var dropdown = document.getElementById("careerDropdown");
             var button = document.getElementById("toggleButton");
-            var isExpanded = dropdown.classList.toggle("show");
-            button.innerHTML = isExpanded ? 'Show Less <i class="fas fa-caret-up"></i>' : 'Show More <i class="fas fa-caret-down"></i>';
-        }
-    </script>
-</body>
-</html>
+            var isExpanded = dropdown
