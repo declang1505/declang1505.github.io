@@ -1,296 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <!-- Important for iOS full-bleed layout -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Dec Gavin</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap');
-        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Dec Gavin</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
 
-        /* Reset and base styles */
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            min-height: 100dvh; /* dynamic viewport height for iOS Chrome/Safari */
-            font-family: 'Roboto', sans-serif;
-            color: #ffffff;
-            overflow-x: hidden;
-            background: url('wallpaper.jpg') no-repeat center center fixed;
-            background-size: cover;
-        }
+/* Body with full-bleed background */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    color: #ffffff;
+    height: 100dvh;
+    min-height: 100dvh;
+    width: 100%;
+    overflow-x: hidden;
+    background: url('wallpaper.jpg') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+}
 
-        /* Overlay for text readability */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100dvh;
-            background: rgba(25, 25, 25, 0.5);
-            z-index: -1;
-            padding-top: env(safe-area-inset-top);
-            padding-bottom: env(safe-area-inset-bottom);
-        }
+/* Overlay tint for readability */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    background: rgba(25, 25, 25, 0.5);
+    z-index: -1;
+}
 
-        /* Header */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 100px 20px 50px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 100px 20px 50px;
+    max-width: 800px;
+    margin: 0 auto;
+}
 
-        header .text {
-            text-align: left;
-        }
+header .text { text-align: left; }
+header h1 { font-family: 'Montserrat', sans-serif; font-size: 3em; margin: 0; }
+header p { font-size: 1.5em; margin: 10px 0 0; }
 
-        header h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 3em;
-            margin: 0;
-        }
+/* Profile image */
+.profile-placeholder {
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profile-placeholder img {
+    width: 300px;
+    height: 300px;
+    border-radius: 15px;
+}
 
-        header p {
-            font-size: 1.5em;
-            margin: 10px 0 0;
-        }
+/* Sections */
+section {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+h2 { font-family: 'Montserrat', sans-serif; font-size: 2em; }
+#about p { font-size: 1.2em; line-height: 1.4; }
 
-        .profile-placeholder {
-            width: 150px;
-            height: 150px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+/* Skills & Career Items */
+#skills .skills-list { display: flex; flex-wrap: wrap; gap: 10px; }
+#skills .skills-list span,
+#career .career-item {
+    background-color: rgba(38, 38, 38, 0.7);
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+#career .career-item { margin: 10px 0; }
+#career .career-item h3 { font-family: 'Montserrat', sans-serif; margin: 0 0 5px; font-size: 1.2em; }
+#career .career-item .company { font-size: 1em; margin-bottom: 5px; }
+#career .career-item .years { font-size: 0.8em; color: #cccccc; }
 
-        .profile-placeholder img {
-            width: 300px;
-            height: 300px;
-            border-radius: 15px;
-        }
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(38,38,38,0.8);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 20px);
+    max-width: 800px;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+    z-index: 10;
+}
+.navbar.transparent { background-color: rgba(38,38,38,0.6); backdrop-filter: blur(5px); }
+.navbar .brand { font-family: 'Montserrat', sans-serif; font-size: 1.2em; margin-left: 10px; font-weight: bold; }
 
-        /* Sections */
-        section {
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+/* Social Icons */
+.navbar .social-links { display: flex; align-items: center; gap: 15px; }
+.navbar .social-links a { font-size: 1.4em; color: #ffffff; text-decoration: none; transition: color 0.3s ease; }
+.navbar .social-links .instagram:hover { color: #FF6EC7; }
+.navbar .social-links .email:hover { color: #6EB5FF; }
+.navbar .social-links .linkedin:hover { color: #A78FFF; }
 
-        h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2em;
-        }
+/* Dropdown Button */
+.dropdown {
+    cursor: pointer;
+    color: #fff;
+    background-color: #333;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    margin: 10px auto;
+}
+.dropdown i { margin-left: 5px; transition: transform 0.3s ease; }
+.dropdown-content { display: none; overflow: hidden; }
+.dropdown-content.show { display: block; }
+.center-button { display: flex; justify-content: center; }
 
-        #about p {
-            font-size: 1.2em;
-            line-height: 1.4;
-        }
-
-        #skills .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        #skills .skills-list span,
-        #career .career-item {
-            background-color: rgba(38, 38, 38, 0.7);
-            padding: 10px 15px;
-            border-radius: 10px;
-        }
-
-        #career .career-item {
-            margin: 10px 0;
-        }
-
-        #career .career-item h3 {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0 0 5px;
-            font-size: 1.2em;
-        }
-
-        #career .career-item .company {
-            font-size: 1em;
-            margin-bottom: 5px;
-        }
-
-        #career .career-item .years {
-            font-size: 0.8em;
-            color: #cccccc;
-        }
-
-        /* Navbar */
-        .navbar {
-            position: fixed;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(38, 38, 38, 0.8);
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: calc(100% - 20px);
-            max-width: 800px;
-            box-sizing: border-box;
-            transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
-            z-index: 10;
-        }
-
-        .navbar.transparent {
-            background-color: rgba(38, 38, 38, 0.6);
-            backdrop-filter: blur(5px);
-        }
-
-        .navbar .brand {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.2em;
-            margin-left: 10px;
-            font-weight: bold;
-        }
-
-        .navbar .social-links {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .navbar .social-links a {
-            font-size: 1.4em;
-            color: #ffffff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .navbar .social-links .instagram:hover { color: #FF6EC7; }
-        .navbar .social-links .email:hover { color: #6EB5FF; }
-        .navbar .social-links .linkedin:hover { color: #A78FFF; }
-
-        /* Dropdown button */
-        .dropdown {
-            cursor: pointer;
-            color: #fff;
-            background-color: #333;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            font-size: 1em;
-            margin: 10px auto;
-        }
-
-        .dropdown i { margin-left: 5px; transition: transform 0.3s ease; }
-        .dropdown-content { display: none; overflow: hidden; }
-        .dropdown-content.show { display: block; }
-        .center-button { display: flex; justify-content: center; }
-
-        /* Media Query */
-        @media (max-width: 600px) {
-            .navbar .brand { font-size: 1em; margin-left: 5px; }
-            .navbar .social-links a { font-size: 1.2em; gap: 5px; }
-        }
-    </style>
+/* Media Queries */
+@media (max-width: 600px) {
+    .navbar .brand { font-size: 1em; margin-left: 5px; }
+    .navbar .social-links a { font-size: 1.2em; gap: 5px; }
+}
+</style>
 </head>
 <body>
-    <div class="navbar" id="navbar">
-        <div class="brand">DG</div>
-        <div class="social-links">
-            <a href="https://www.instagram.com/declang1505/" class="instagram" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="mailto:declangavin@icloud.com" class="email" title="Send me an email">
-                <i class="fas fa-envelope"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/declan-g-23538a166/" class="linkedin" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-linkedin"></i>
-            </a>
+<div class="navbar" id="navbar">
+    <div class="brand">DG</div>
+    <div class="social-links">
+        <a href="https://www.instagram.com/declang1505/" class="instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:declangavin@icloud.com" class="email" title="Send me an email"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/declan-g-23538a166/" class="linkedin" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+    </div>
+</div>
+
+<header>
+    <div class="text">
+        <h1>Dec Gavin</h1>
+        <p>Aerospace Engineering Student from the South West.</p>
+    </div>
+    <div class="profile-placeholder">
+        <img src="memoji.png" alt="Profile Photo">
+    </div>
+</header>
+
+<section id="about">
+    <h2>About Me</h2>
+    <p>Hey! I'm Dec Gavin, a motivated professional with a background in logistics and supply chain operations. Currently pursuing a BEng in Aerospace Engineering at the University of the West of England, I have experience in improving workflow efficiency and facilitating global logistics. With a strong foundation in customer service, supplier interaction, and inventory control, I am committed to a career in engineering.</p>
+</section>
+
+<section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-list">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+        <span>Matlab</span>
+        <span>Solidworks</span>
+    </div>
+</section>
+
+<section id="career">
+    <h2>Career</h2>
+    <p>Here's a brief overview of my career journey so far:</p>
+    <div class="career-item">
+        <h3>Cycle Technician</h3>
+        <div class="company">The Electric Bike Shop</div>
+        <div class="years">2024 - 2025</div>
+    </div>
+    <div class="center-button">
+        <button class="dropdown" onclick="toggleDropdown()" id="toggleButton">Show More <i class="fas fa-caret-down"></i></button>
+    </div>
+    <div class="dropdown-content" id="careerDropdown">
+        <div class="career-item">
+            <h3>Keyholder - Stockroom Supervisor</h3>
+            <div class="company">Levi Strauss & Co</div>
+            <div class="years">2023 - 2024</div>
+        </div>
+        <div class="career-item">
+            <h3>Storekeeper - Receipts and Dangerous Goods</h3>
+            <div class="company">UK Ministry of Defence</div>
+            <div class="years">2022 - 2023</div>
+        </div>
+        <div class="career-item">
+            <h3>Department Supervisor</h3>
+            <div class="company">Halfords Group</div>
+            <div class="years">2018 - 2022</div>
+        </div>
+        <div class="career-item">
+            <h3>Trainee IT Technician</h3>
+            <div class="company">Labyrinth IT Solutions</div>
+            <div class="years">2017</div>
         </div>
     </div>
+</section>
 
-    <header>
-        <div class="text">
-            <h1>Dec Gavin</h1>
-            <p>Aerospace Engineering Student from the South West.</p>
-        </div>
-        <div class="profile-placeholder">
-            <img src="memoji.png" alt="Profile Photo">
-        </div>
-    </header>
+<script>
+window.addEventListener("scroll", function() {
+    var navbar = document.getElementById("navbar");
+    navbar.classList.toggle("transparent", window.scrollY > 0);
+});
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Hey! I'm Dec Gavin, a motivated professional with a background in logistics and supply chain operations. Currently pursuing a BEng in Aerospace Engineering at the University of the West of England, I have experience in improving workflow efficiency and facilitating global logistics. With a strong foundation in customer service, supplier interaction, and inventory control, I am committed to a career in engineering.</p>
-    </section>
-
-    <section id="skills">
-        <h2>Skills</h2>
-        <div class="skills-list">
-            <span>HTML</span>
-            <span>CSS</span>
-            <span>JavaScript</span>
-            <span>Matlab</span>
-            <span>Solidworks</span>
-        </div>
-    </section>
-
-    <section id="career">
-        <h2>Career</h2>
-        <p>Here's a brief overview of my career journey so far:</p>
-        <div class="career-item">
-            <h3>Cycle Technician</h3>
-            <div class="company">The Electric Bike Shop</div>
-            <div class="years">2024 - 2025</div>
-        </div>
-        <div class="center-button">
-            <button class="dropdown" onclick="toggleDropdown()" id="toggleButton">Show More <i class="fas fa-caret-down"></i></button>
-        </div>
-        <div class="dropdown-content" id="careerDropdown">
-            <div class="career-item">
-                <h3>Keyholder - Stockroom Supervisor</h3>
-                <div class="company">Levi Strauss & Co</div>
-                <div class="years">2023 - 2024</div>
-            </div>
-            <div class="career-item">
-                <h3>Storekeeper - Receipts and Dangerous Goods</h3>
-                <div class="company">UK Ministry of Defence</div>
-                <div class="years">2022 - 2023</div>
-            </div>
-            <div class="career-item">
-                <h3>Department Supervisor</h3>
-                <div class="company">Halfords Group</div>
-                <div class="years">2018 - 2022</div>
-            </div>
-            <div class="career-item">
-                <h3>Trainee IT Technician</h3>
-                <div class="company">Labyrinth IT Solutions</div>
-                <div class="years">2017</div>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        window.addEventListener("scroll", function() {
-            var navbar = document.getElementById("navbar");
-            navbar.classList.toggle("transparent", window.scrollY > 0);
-        });
-
-        function toggleDropdown() {
-            var dropdown = document.getElementById("careerDropdown");
-            var button = document.getElementById("toggleButton");
-            var isExpanded = dropdown.classList.toggle("show");
-            button.innerHTML = isExpanded ? 'Show Less <i class="fas fa-caret-up"></i>' : 'Show More <i class="fas fa-caret-down"></i>';
-        }
-    </script>
+function toggleDropdown() {
+    var dropdown = document.getElementById("careerDropdown");
+    var button = document.getElementById("toggleButton");
+    var isExpanded = dropdown.classList.toggle("show");
+    button.innerHTML = isExpanded ? 'Show Less <i class="fas fa-caret-up"></i>' : 'Show More <i class="fas fa-caret-down"></i>';
+}
+</script>
 </body>
 </html>
