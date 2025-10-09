@@ -4,20 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dec Gavin</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
 
-        /* Ensure html/body take full height */
-        html, body {
-            height: 100%;
+        /* Background using local wallpaper.jpg */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: url('wallpaper.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
             margin: 0;
             padding: 0;
-            font-family: 'Roboto', sans-serif;
-            color: #ffffff;
+            position: relative;
         }
 
-        /* Fixed full-screen wallpaper with overlay */
+        /* Mobile fix */
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll; /* Scroll instead of fixed */
+            }
+        }
+
+        /* Overlay for text readability */
         body::before {
             content: "";
             position: fixed;
@@ -25,22 +34,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('wallpaper.jpg') center center / cover no-repeat;
-            z-index: -2;
-        }
-
-        body::after {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(25, 25, 25, 0.5); /* Overlay for readability */
+            background: rgba(25, 25, 25, 0.5); /* Adjust opacity as needed */
             z-index: -1;
         }
 
-        /* General styling */
         header {
             display: flex;
             justify-content: space-between;
@@ -50,22 +47,36 @@
             margin: 0 auto;
         }
 
-        header .text h1 {
+        header .text {
+            text-align: left;
+        }
+
+        header h1 {
             font-family: 'Montserrat', sans-serif;
             font-size: 3em;
             margin: 0;
         }
 
-        header .text p {
+        header p {
             font-size: 1.5em;
             margin: 10px 0 0;
-            line-height: 1.8; /* Extra spacing for readability */
+        }
+
+        .profile-placeholder {
+            width: 150px;
+            height: 150px;
+            border-radius: 15px;
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .profile-placeholder img {
-            width: 250px;
-            height: 250px;
+            width: 300px;
+            height: 300px;
             border-radius: 15px;
+            background-color: transparent;
         }
 
         section {
@@ -79,49 +90,102 @@
             font-size: 2em;
         }
 
+        #about p {
+            font-size: 1.2em;
+            line-height: 1.4; /* Added line spacing */
+        }
+
+        #skills .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
         #skills .skills-list span,
         #career .career-item {
-            background-color: #262626;
+            background-color: rgba(38, 38, 38, 0.7);
             padding: 10px 15px;
             border-radius: 10px;
         }
 
+        #career .career-item {
+            margin: 10px 0;
+        }
+
+        #career .career-item h3 {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0 0 5px;
+            font-size: 1.2em;
+        }
+
+        #career .career-item .company {
+            font-size: 1em;
+            margin-bottom: 5px;
+        }
+
+        #career .career-item .years {
+            font-size: 0.8em;
+            color: #cccccc;
+        }
+
+        /* Navbar */
         .navbar {
             position: fixed;
             top: 10px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: #262626;
+            background-color: rgba(38, 38, 38, 0.8);
             color: #fff;
             padding: 10px 20px;
+            border-radius: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: calc(100% - 20px);
             max-width: 800px;
-            border-radius: 10px;
-            z-index: 10;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+        }
+
+        .navbar.transparent {
+            background-color: rgba(38, 38, 38, 0.6);
+            backdrop-filter: blur(5px);
         }
 
         .navbar .brand {
             font-family: 'Montserrat', sans-serif;
             font-size: 1.2em;
+            margin-left: 10px;
             font-weight: bold;
         }
 
-        .navbar a {
-            font-size: 1.5em;
-            color: #fff;
-            margin-left: 10px;
+        /* Social icons */
+        .navbar .social-links {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .navbar .social-links a {
+            font-size: 1.4em;
+            color: #ffffff;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.3s ease;
         }
 
-        .navbar a:hover {
-            color: #61dafb; /* Accent color */
+        .navbar .social-links .instagram:hover {
+            color: #FF6EC7; /* Pink from wallpaper */
         }
 
-        /* Career dropdown */
+        .navbar .social-links .email:hover {
+            color: #6EB5FF; /* Blue highlight */
+        }
+
+        .navbar .social-links .linkedin:hover {
+            color: #A78FFF; /* Violet tone */
+        }
+
+        /* Dropdown button */
         .dropdown {
             cursor: pointer;
             color: #fff;
@@ -154,52 +218,51 @@
             justify-content: center;
         }
 
-        /* Media queries for mobile */
-        @media (max-width: 768px) {
+        /* Media Query */
+        @media (max-width: 600px) {
             .navbar .brand {
                 font-size: 1em;
+                margin-left: 5px;
             }
-            .navbar a {
+
+            .navbar .social-links a {
                 font-size: 1.2em;
+                gap: 5px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navbar with social icons -->
-    <div class="navbar">
+    <div class="navbar" id="navbar">
         <div class="brand">DG</div>
-        <div>
-            <a href="https://www.instagram.com/yourusername" target="_blank" rel="noopener noreferrer">
+        <div class="social-links">
+            <a href="https://www.instagram.com/declang1505/" class="instagram" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-instagram"></i>
             </a>
-            <a href="https://www.linkedin.com/in/declan-g-23538a166/" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="mailto:youremail@example.com">
+            <a href="mailto:declangavin@icloud.com" class="email" title="Send me an email">
                 <i class="fas fa-envelope"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/declan-g-23538a166/" class="linkedin" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-linkedin"></i>
             </a>
         </div>
     </div>
 
-    <!-- Header -->
     <header>
         <div class="text">
             <h1>Dec Gavin</h1>
-            <p>An Aerospace Engineering Student from the South West.</p>
+            <p>Aerospace Engineering Student from the South West.</p>
         </div>
         <div class="profile-placeholder">
             <img src="memoji.png" alt="Profile Photo">
         </div>
     </header>
 
-    <!-- About section -->
     <section id="about">
         <h2>About Me</h2>
         <p>Hey! I'm Dec Gavin, a motivated professional with a background in logistics and supply chain operations. Currently pursuing a BEng in Aerospace Engineering at the University of the West of England, I have experience in improving workflow efficiency and facilitating global logistics. With a strong foundation in customer service, supplier interaction, and inventory control, I am committed to a career in engineering.</p>
     </section>
 
-    <!-- Skills section -->
     <section id="skills">
         <h2>Skills</h2>
         <div class="skills-list">
@@ -207,10 +270,10 @@
             <span>CSS</span>
             <span>JavaScript</span>
             <span>Matlab</span>
+            <span>Solidworks</span>
         </div>
     </section>
 
-    <!-- Career section -->
     <section id="career">
         <h2>Career</h2>
         <p>Here's a brief overview of my career journey so far:</p>
@@ -248,7 +311,7 @@
 
     <script>
         window.addEventListener("scroll", function() {
-            var navbar = document.querySelector(".navbar");
+            var navbar = document.getElementById("navbar");
             navbar.classList.toggle("transparent", window.scrollY > 0);
         });
 
