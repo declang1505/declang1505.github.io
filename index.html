@@ -2,30 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Important for iOS full-bleed layout -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Dec Gavin</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap');
         @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
 
-        /* Background using local wallpaper.jpg */
+        /* Reset and base styles */
         html, body {
             margin: 0;
             padding: 0;
+            width: 100%;
+            height: 100%;
+            min-height: 100dvh; /* dynamic viewport height for iOS Chrome/Safari */
             font-family: 'Roboto', sans-serif;
             color: #ffffff;
-            height: 100%;
-            width: 100%;
+            overflow-x: hidden;
             background: url('wallpaper.jpg') no-repeat center center fixed;
             background-size: cover;
-            overflow-x: hidden;
-        }
-
-        /* Mobile fix for background scrolling */
-        @media (max-width: 768px) {
-            body {
-                background-attachment: scroll;
-            }
         }
 
         /* Overlay for text readability */
@@ -35,9 +30,11 @@
             top: 0;
             left: 0;
             width: 100vw;
-            height: 100%;
+            height: 100dvh;
             background: rgba(25, 25, 25, 0.5);
             z-index: -1;
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
         }
 
         /* Header */
@@ -50,13 +47,20 @@
             margin: 0 auto;
         }
 
-        header .text { text-align: left; }
+        header .text {
+            text-align: left;
+        }
+
         header h1 {
             font-family: 'Montserrat', sans-serif;
             font-size: 3em;
             margin: 0;
         }
-        header p { font-size: 1.5em; margin: 10px 0 0; }
+
+        header p {
+            font-size: 1.5em;
+            margin: 10px 0 0;
+        }
 
         .profile-placeholder {
             width: 150px;
@@ -65,15 +69,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: transparent;
         }
+
         .profile-placeholder img {
             width: 300px;
             height: 300px;
             border-radius: 15px;
-            background-color: transparent;
         }
 
+        /* Sections */
         section {
             padding: 20px;
             max-width: 800px;
@@ -140,6 +144,7 @@
             max-width: 800px;
             box-sizing: border-box;
             transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+            z-index: 10;
         }
 
         .navbar.transparent {
@@ -154,18 +159,19 @@
             font-weight: bold;
         }
 
-        /* Social icons */
         .navbar .social-links {
             display: flex;
             align-items: center;
             gap: 15px;
         }
+
         .navbar .social-links a {
             font-size: 1.4em;
             color: #ffffff;
             text-decoration: none;
             transition: color 0.3s ease;
         }
+
         .navbar .social-links .instagram:hover { color: #FF6EC7; }
         .navbar .social-links .email:hover { color: #6EB5FF; }
         .navbar .social-links .linkedin:hover { color: #A78FFF; }
@@ -183,12 +189,13 @@
             font-size: 1em;
             margin: 10px auto;
         }
+
         .dropdown i { margin-left: 5px; transition: transform 0.3s ease; }
         .dropdown-content { display: none; overflow: hidden; }
         .dropdown-content.show { display: block; }
         .center-button { display: flex; justify-content: center; }
 
-        /* Mobile adjustments */
+        /* Media Query */
         @media (max-width: 600px) {
             .navbar .brand { font-size: 1em; margin-left: 5px; }
             .navbar .social-links a { font-size: 1.2em; gap: 5px; }
