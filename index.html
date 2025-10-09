@@ -23,13 +23,16 @@
         @media (max-width: 768px) {
             body {
                 background-attachment: scroll; /* Scroll instead of fixed */
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
             }
         }
 
         /* Overlay for text readability */
         body::before {
             content: "";
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
