@@ -2,75 +2,77 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, viewport-fit=cover">
 <title>Dec Gavin</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
 
-/* ============================================
-   iOS 26 Safari Compatibility Fixes
-   ============================================ */
+/* ===============================
+   Global Resets
+================================== */
 
-/* Remove iOS rubber-band bounce scroll for better background behavior */
 html, body {
-    overscroll-behavior-y: contain;
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
     color: #fff;
     overflow-x: hidden;
+
+    /* Full height cascade with fallback */
+    height: 100vh;
+    height: 100svh;
+    height: 100dvh;
 }
 
-/* iOS 26 Safari: Use dynamic viewport height (dvh) with fallback */
-html, body {
-    /* Fallback for older browsers */
-    min-height: 100vh;
-    /* iOS 26+ Safari: Dynamic viewport that accounts for floating URL bar */
-    min-height: 100dvh;
-}
+/* ===============================
+   Background Layers
+================================== */
 
-/* iOS 26 Safari: Apply safe area insets to body */
-body {
-    padding-top: env(safe-area-inset-top);
-    padding-bottom: env(safe-area-inset-bottom);
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
-    box-sizing: border-box;
-}
-
-/* Fixed background layers - extend fully behind notch and home indicator */
 .bg-overlay,
 .overlay-tint {
-    position: fixed;
-    /* Extend beyond safe area to cover entire screen including notch */
-    top: calc(-1 * env(safe-area-inset-top, 0px));
-    left: calc(-1 * env(safe-area-inset-left, 0px));
-    right: calc(-1 * env(safe-area-inset-right, 0px));
-    bottom: calc(-1 * env(safe-area-inset-bottom, 0px));
-    /* Use viewport units that include the entire screen */
-    width: calc(100vw + env(safe-area-inset-left, 0px) + env(safe-area-inset-right, 0px));    
-    /* Fallback for older browsers */
-    height: calc(100vh + env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px));
-    /* iOS 26+ Safari: Use small viewport height (entire screen including toolbars) */
-    height: calc(100svh + env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px));
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
+    height: 100dvh;
     z-index: -2;
+}
+
+/* Desktop: fixed background */
+@media (hover: hover) and (pointer: fine) {
+    .bg-overlay,
+    .overlay-tint {
+        position: fixed;
+        background-attachment: fixed;
+    }
+}
+
+/* Touch devices: scrolling background */
+@media (hover: none) and (pointer: coarse) {
+    .bg-overlay,
+    .overlay-tint {
+        position: absolute;
+        background-attachment: scroll;
+    }
 }
 
 .bg-overlay {
     background: url('wallpaper.jpg') center/cover no-repeat;
 }
 
-/* Semi-transparent overlay for readability */
 .overlay-tint {
     background: rgba(25,25,25,0.5);
     z-index: -1;
 }
 
-/* Navbar - adjusted for safe area */
+/* ===============================
+   Navbar
+================================== */
+
 .navbar {
     position: fixed;
-    /* Account for safe area inset at top (notch) */
     top: calc(env(safe-area-inset-top, 0px) + 10px);
     left: 50%;
     transform: translateX(-50%);
@@ -100,7 +102,6 @@ body {
     font-weight: bold;
 }
 
-/* Social icons */
 .navbar .social-links {
     display: flex;
     align-items: center;
@@ -118,12 +119,14 @@ body {
 .navbar .social-links .email:hover { color: #6EB5FF; }
 .navbar .social-links .linkedin:hover { color: #A78FFF; }
 
-/* Header - adjusted for safe area */
+/* ===============================
+   Header
+================================== */
+
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* Account for safe area at top plus navbar space */
     padding-top: calc(env(safe-area-inset-top, 0px) + 100px);
     padding-right: 20px;
     padding-bottom: 50px;
@@ -162,15 +165,18 @@ header p {
     border-radius: 15px;
 }
 
+/* ===============================
+   Content Sections
+================================== */
+
 section {
     padding: 20px;
     max-width: 800px;
     margin: 0 auto;
 }
 
-/* Ensure content has proper bottom padding for safe area */
 section:last-of-type {
-    padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: max(20px, env(safe-area-inset-bottom, 20px));
 }
 
 h2 {
@@ -216,7 +222,7 @@ h2 {
     color: #cccccc;
 }
 
-/* Dropdown button */
+/* Dropdown */
 .dropdown {
     cursor: pointer;
     color: #fff;
@@ -249,7 +255,10 @@ h2 {
     justify-content: center;
 }
 
-/* Media Query */
+/* ===============================
+   Responsive Adjustments
+================================== */
+
 @media (max-width: 600px) {
     .navbar .brand { font-size: 1em; margin-left: 5px; }
     .navbar .social-links { gap: 10px; }
@@ -263,27 +272,6 @@ h2 {
         height: 200px;
     }
 }
-
-/* Progressive enhancement: Only apply dvh if supported */
-@supports (height: 100dvh) {
-    html, body {
-        min-height: 100dvh;
-    }
-    
-    .bg-overlay,
-    .overlay-tint {
-        height: 100dvh;
-    }
-}
-
-/* iOS 26 Safari: Workaround for fixed position gap bug */
-@supports (-webkit-touch-callout: none) {
-    /* Only apply to iOS Safari */
-    body {
-        position: relative;
-    }
-}
-
 </style>
 </head>
 <body>
