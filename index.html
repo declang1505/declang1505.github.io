@@ -2,11 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Dec Gavin</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+
+/* ============================================
+   iOS 26 Safari Compatibility Fixes
+   ============================================ */
 
 /* Remove iOS rubber-band bounce scroll for better background behavior */
 html, body {
@@ -15,37 +19,113 @@ html, body {
     padding: 0;
     font-family: 'Roboto', sans-serif;
     color: #fff;
-    min-height: 100vh;
     overflow-x: hidden;
 }
 
-/* Fixed background div */
-.bg-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('wallpaper.jpg') center/cover no-repeat;
-    z-index: -2;
+/* iOS 26 Safari: Use dynamic viewport height (dvh) with fallback */
+html, body {
+    /* Fallback for older browsers */
+    min-height: 100vh;
+    /* iOS 26+ Safari: Dynamic viewport that accounts for floating URL bar */
+    min-height: 100dvh;
 }
 
-/* Semi-transparent overlay for readability */
+/* iOS 26 Safari: Apply safe area insets to body */
+body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    box-sizing: border-box;
+}
+
+/* Fixed background layers - extend fully behind notch and home indicator */
+.bg-overlay,
 .overlay-tint {
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
     width: 100%;
-    height: 100%;
+    /* Fallback for older browsers */
+    height: 100vh;
+    /* iOS 26+ Safari: Use dynamic viewport height */
+    height: 100dvh;
+    z-index: -2;
+}
+
+.bg-overlay {
+    background: url('wallpaper.jpg') center/cover no-repeat;
+}
+
+/* Semi-transparent overlay for readability */
+.overlay-tint {
     background: rgba(25,25,25,0.5);
     z-index: -1;
 }
 
+/* Navbar - adjusted for safe area */
+.navbar {
+    position: fixed;
+    /* Account for safe area inset at top (notch) */
+    top: calc(env(safe-area-inset-top, 0px) + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(38,38,38,0.8);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 20px);
+    max-width: 800px;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+    z-index: 1000;
+}
+
+.navbar.transparent {
+    background-color: rgba(38,38,38,0.6);
+    backdrop-filter: blur(5px);
+}
+
+.navbar .brand {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2em;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+/* Social icons */
+.navbar .social-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.navbar .social-links a {
+    font-size: 1.4em;
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navbar .social-links .instagram:hover { color: #FF6EC7; }
+.navbar .social-links .email:hover { color: #6EB5FF; }
+.navbar .social-links .linkedin:hover { color: #A78FFF; }
+
+/* Header - adjusted for safe area */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 100px 20px 50px;
+    /* Account for safe area at top plus navbar space */
+    padding-top: calc(env(safe-area-inset-top, 0px) + 100px);
+    padding-right: 20px;
+    padding-bottom: 50px;
+    padding-left: 20px;
     max-width: 800px;
     margin: 0 auto;
 }
@@ -84,6 +164,11 @@ section {
     padding: 20px;
     max-width: 800px;
     margin: 0 auto;
+}
+
+/* Ensure content has proper bottom padding for safe area */
+section:last-of-type {
+    padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px));
 }
 
 h2 {
@@ -129,55 +214,6 @@ h2 {
     color: #cccccc;
 }
 
-/* Navbar */
-.navbar {
-    position: fixed;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(38,38,38,0.8);
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: calc(100% - 20px);
-    max-width: 800px;
-    box-sizing: border-box;
-    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
-}
-
-.navbar.transparent {
-    background-color: rgba(38,38,38,0.6);
-    backdrop-filter: blur(5px);
-}
-
-.navbar .brand {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.2em;
-    margin-left: 10px;
-    font-weight: bold;
-}
-
-/* Social icons */
-.navbar .social-links {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.navbar .social-links a {
-    font-size: 1.4em;
-    color: #ffffff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.navbar .social-links .instagram:hover { color: #FF6EC7; }
-.navbar .social-links .email:hover { color: #6EB5FF; }
-.navbar .social-links .linkedin:hover { color: #A78FFF; }
-
 /* Dropdown button */
 .dropdown {
     cursor: pointer;
@@ -214,47 +250,36 @@ h2 {
 /* Media Query */
 @media (max-width: 600px) {
     .navbar .brand { font-size: 1em; margin-left: 5px; }
-    .navbar .social-links a { font-size: 1.2em; gap: 5px; }
+    .navbar .social-links { gap: 10px; }
+    .navbar .social-links a { font-size: 1.2em; }
+    
+    header h1 { font-size: 2em; }
+    header p { font-size: 1.2em; }
+    
+    .profile-placeholder img {
+        width: 200px;
+        height: 200px;
+    }
 }
 
-/* --- iOS Edge-to-Edge Layout Support --- */
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* Progressive enhancement: Only apply dvh if supported */
+@supports (height: 100dvh) {
+    html, body {
+        min-height: 100dvh;
+    }
+    
+    .bg-overlay,
+    .overlay-tint {
+        height: 100dvh;
+    }
 }
 
-/* Allow content to extend fully behind the notch and Safari bars */
-body {
-  padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
-  padding-left: env(safe-area-inset-left);
-  padding-right: env(safe-area-inset-right);
-}
-
-/* Make sure your fixed background fills the screen behind the notch too */
-.bg-overlay,
-.overlay-tint {
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  position: fixed;
-  width: auto;
-  height: auto;
-}
-
-/* Adjust the navbar so it doesn't clash with the notch */
-.navbar {
-  top: calc(env(safe-area-inset-top) + 10px);
-}
-
-header {
-  padding-top: calc(env(safe-area-inset-top) + 80px);
-  padding-right: 20px;
-  padding-bottom: 50px;
-  padding-left: 20px;
+/* iOS 26 Safari: Workaround for fixed position gap bug */
+@supports (-webkit-touch-callout: none) {
+    /* Only apply to iOS Safari */
+    body {
+        position: relative;
+    }
 }
 
 </style>
