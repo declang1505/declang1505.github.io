@@ -43,15 +43,17 @@ body {
 .bg-overlay,
 .overlay-tint {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
+    /* Extend beyond safe area to cover entire screen including notch */
+    top: calc(-1 * env(safe-area-inset-top, 0px));
+    left: calc(-1 * env(safe-area-inset-left, 0px));
+    right: calc(-1 * env(safe-area-inset-right, 0px));
+    bottom: calc(-1 * env(safe-area-inset-bottom, 0px));
+    /* Use viewport units that include the entire screen */
+    width: calc(100vw + env(safe-area-inset-left, 0px) + env(safe-area-inset-right, 0px));    
     /* Fallback for older browsers */
-    height: 100vh;
-    /* iOS 26+ Safari: Use dynamic viewport height */
-    height: 100dvh;
+    height: calc(100vh + env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px));
+    /* iOS 26+ Safari: Use small viewport height (entire screen including toolbars) */
+    height: calc(100svh + env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px));
     z-index: -2;
 }
 
