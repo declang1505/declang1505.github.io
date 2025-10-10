@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Dec Gavin</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap');
@@ -216,6 +216,47 @@ h2 {
     .navbar .brand { font-size: 1em; margin-left: 5px; }
     .navbar .social-links a { font-size: 1.2em; gap: 5px; }
 }
+
+/* --- iOS Edge-to-Edge Layout Support --- */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Allow content to extend fully behind the notch and Safari bars */
+body {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* Make sure your fixed background fills the screen behind the notch too */
+.bg-overlay,
+.overlay-tint {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  width: auto;
+  height: auto;
+}
+
+/* Adjust the navbar so it doesn't clash with the notch */
+.navbar {
+  top: calc(env(safe-area-inset-top) + 10px);
+}
+
+header {
+  padding-top: calc(env(safe-area-inset-top) + 80px);
+  padding-right: 20px;
+  padding-bottom: 50px;
+  padding-left: 20px;
+}
+
 </style>
 </head>
 <body>
