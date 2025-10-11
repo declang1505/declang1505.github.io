@@ -68,7 +68,6 @@ body {
     width: calc(100% - 30px);
     max-width: 800px;
 
-    /* Glass / iOS style */
     backdrop-filter: blur(6px) saturate(100%) contrast(100%) brightness(100%);
     -webkit-backdrop-filter: blur(6px) saturate(100%) contrast(100%) brightness(100%);
     border: 1px solid rgba(255, 255, 255, 0.18);
@@ -121,19 +120,27 @@ h2 { font-family: 'Montserrat', sans-serif; font-size: 2em; }
 .bubble-list { display: flex; flex-wrap: wrap; gap: 10px; }
 .bubble-list span,
 #career .career-item {
-    background-color: rgba(38,38,38,0.7);
+    background: rgba(255, 255, 255, 0.12);
     padding: 10px 15px;
-    border-radius: 10px;
-    border: 2px solid rgba(255,255,255,0);
-    transition: background-color 0.3s ease, border 0.3s ease;
+    border-radius: 15px;
+    
+    backdrop-filter: blur(6px) saturate(100%) contrast(100%) brightness(100%);
+    -webkit-backdrop-filter: blur(6px) saturate(100%) contrast(100%) brightness(100%);
+    
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+    
+    transition: background 0.3s ease, backdrop-filter 0.3s ease, border 0.3s ease;
 }
 
-/* Hover effects (desktop only) */
+/* Preserve hover behaviour */
 @media (hover: hover) and (pointer: fine) {
   .bubble-list span:hover,
   #career .career-item:hover {
-    background-color: rgba(38,38,38,0.85);
-    border: 2px solid rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px) saturate(120%) contrast(110%) brightness(120%);
+    -webkit-backdrop-filter: blur(10px) saturate(120%) contrast(110%) brightness(120%);
+    border: 1px solid rgba(255,255,255,0.25);
   }
 }
 
@@ -143,28 +150,40 @@ h2 { font-family: 'Montserrat', sans-serif; font-size: 2em; }
 #career .career-item .company { font-size: 1em; margin-bottom: 5px; }
 #career .career-item .years { font-size: 0.8em; color: #ccc; }
 
-/* Dropdown/button */
+/* Fix spacing: remove extra top margin on first hidden career item */
+#career .dropdown-content .career-item:first-child { margin-top: 0; }
+
+/* Dropdown/button - Liquid Glass with subtle purple color */
 .dropdown {
     cursor: pointer;
     color: #fff;
-    background: linear-gradient(145deg, #89338A, #9C4BA5);
+    background: linear-gradient(145deg, rgba(137,51,138,0.6), rgba(156,75,165,0.6));
     border-radius: 20px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
     font-size: 1em;
     margin: 10px auto;
-    border: 2px solid rgba(255,255,255,0);
+    border: 1px solid rgba(255,255,255,0.18);
     padding: 10px 15px;
     min-width: 120px;
-    transition: background 0.3s ease, border 0.3s ease;
+
+    backdrop-filter: blur(6px) saturate(100%) contrast(100%) brightness(100%);
+    -webkit-backdrop-filter: blur(6px) saturate(100%) contrast(100%) brightness(100%);
+    
+    transition: background 0.3s ease, border 0.3s ease, backdrop-filter 0.3s ease;
 }
+
+/* Hover: slightly brighter, stronger blur */
 @media (hover: hover) and (pointer: fine) {
   .dropdown:hover {
-    background: linear-gradient(145deg, #9C4BA5, #B063C2);
-    border: 2px solid rgba(255,255,255,0.2);
+    background: linear-gradient(145deg, rgba(156,75,165,0.8), rgba(176,99,194,0.8));
+    backdrop-filter: blur(10px) saturate(120%) contrast(110%) brightness(120%);
+    -webkit-backdrop-filter: blur(10px) saturate(120%) contrast(110%) brightness(120%);
+    border: 1px solid rgba(255,255,255,0.25);
   }
 }
+
 .dropdown i { margin-left: 5px; transition: transform 0.3s ease; }
 
 /* Smooth dropdown */
