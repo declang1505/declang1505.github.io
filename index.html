@@ -24,19 +24,26 @@
     .nav-right{display:flex;align-items:center;gap:10px}.social-icon{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;color:#554e62;border:1px solid #ded9e2;background:#fff;transition:background .2s,color .2s,transform .2s}.social-icon:hover{background:var(--accent-soft);color:var(--accent);transform:translateY(-2px)}.social-icon svg{height:19px;width:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
     .social-icon svg.linkedin-mark{fill:currentColor;stroke:none}
     .hero{padding-top:34px}
-    .hero-panel{position:relative;overflow:hidden;isolation:isolate;min-height:465px;border-radius:25px;padding:70px 70px 60px;background:radial-gradient(ellipse at 83% 23%,#57446f 0,transparent 39%),radial-gradient(ellipse at 42% 115%,#483254 0,transparent 47%),linear-gradient(130deg,#292238,#231c33 74%);color:var(--hero-ink);display:flex;align-items:center;justify-content:space-between;gap:36px}
+    .hero-panel{position:relative;overflow:hidden;isolation:isolate;min-height:0;border-radius:25px;padding:52px 62px 49px;background:radial-gradient(ellipse at 83% 23%,#57446f 0,transparent 39%),radial-gradient(ellipse at 42% 115%,#483254 0,transparent 47%),linear-gradient(130deg,#292238,#231c33 74%);color:var(--hero-ink);display:flex;align-items:center;justify-content:space-between;gap:36px}
     .hero-panel:before{content:"";position:absolute;inset:auto -9% -80% 35%;height:115%;border:1px solid rgba(255,255,255,.10);border-radius:50%;transform:rotate(-20deg);z-index:-1;box-shadow:0 0 0 95px rgba(255,255,255,.018),0 0 0 190px rgba(255,255,255,.015)}
-    .hero-copy{max-width:670px;position:relative;z-index:2}.eyebrow{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#c7b9eb}.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:#bcabed}
+    .hero-copy{max-width:830px;position:relative;z-index:2}.eyebrow{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#c7b9eb}.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:#bcabed}
     h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:'Space Grotesk',sans-serif;letter-spacing:-.045em}
-    h1{font-size:clamp(55px,7vw,91px);line-height:1.025;margin:26px 0 25px;font-weight:600;letter-spacing:-.073em}
-    .hero-lead{font-size:clamp(17px,2vw,20px);line-height:1.6;color:#e3dce8;max-width:560px;margin:0 0 32px}
+    h1{font-size:clamp(49px,6vw,76px);line-height:1.025;margin:16px 0 17px;font-weight:600;letter-spacing:-.073em}
+    .hero-lead{font-size:clamp(17px,2vw,20px);line-height:1.6;color:#e3dce8;max-width:690px;margin:0 0 25px}
     .hero-actions{display:flex;gap:15px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;border-radius:99px;padding:14px 20px;font-size:13px;font-weight:700;transition:transform .2s,background .2s}.btn:hover{transform:translateY(-2px)}.btn-primary{background:#f8f6fa;color:#30263e}.btn-primary:hover{background:#e9dff4}.btn-ghost{border:1px solid rgba(255,255,255,.27);color:#fff}.btn-ghost:hover{background:rgba(255,255,255,.07)}
     .avatar-wrap{position:relative;flex:0 0 235px;height:245px;display:grid;place-items:center}.avatar-back{position:absolute;inset:17px 0 4px;border:1px solid rgba(255,255,255,.17);border-radius:50%;background:radial-gradient(circle at 48% 50%,rgba(191,163,215,.22),rgba(255,255,255,.025) 68%)}.avatar-wrap:after{content:"";position:absolute;inset:0 -13px -9px;border:1px solid rgba(255,255,255,.07);border-radius:50%}.avatar{width:238px;position:relative;z-index:1;filter:drop-shadow(0 15px 24px rgba(11,7,17,.2));object-fit:contain}
     .quickline{display:flex;align-items:center;gap:15px;flex-wrap:wrap;padding:25px 5px;color:#77737e;font-size:13px}.quickline strong{font-weight:700;color:#35303e}.sep{width:4px;height:4px;border-radius:50%;background:#c4bdc8}
-    .section{padding:77px 0 11px}.section-heading{display:flex;align-items:end;justify-content:space-between;gap:26px;margin-bottom:28px}.overline{color:var(--accent);font-size:12px;letter-spacing:.13em;text-transform:uppercase;font-weight:800;margin-bottom:11px}.section-heading h2{font-size:clamp(30px,4vw,42px);font-weight:600;line-height:1.14;margin:0}.section-note{font-size:14px;color:var(--muted);max-width:370px;line-height:1.65;margin:0}
+    .section{padding-block:77px 11px}.section-heading{display:flex;align-items:end;justify-content:space-between;gap:26px;margin-bottom:28px}.overline{color:var(--accent);font-size:12px;letter-spacing:.13em;text-transform:uppercase;font-weight:800;margin-bottom:11px}.section-heading h2{font-size:clamp(30px,4vw,42px);font-weight:600;line-height:1.14;margin:0}.section-note{font-size:14px;color:var(--muted);max-width:370px;line-height:1.65;margin:0}
     .about-grid{display:grid;grid-template-columns:1.35fr .8fr;gap:25px}.about-copy,.side-note,.project-card,.experience-card{background:var(--paper);border:1px solid var(--line);border-radius:19px;box-shadow:var(--shadow)}
     .about-copy{padding:34px 37px}.about-copy p{line-height:1.85;font-size:15.5px;color:#55525d;margin:0 0 15px}.about-copy p:last-child{margin-bottom:0}.about-copy strong{color:#292531;font-weight:700}
     .side-note{padding:32px;background:#edeaf2;border-color:#e5e1ed;display:flex;flex-direction:column;justify-content:space-between}.side-note .small-label{font-size:12px;color:#777084;font-weight:750;letter-spacing:.12em;text-transform:uppercase}.side-note h3{font-size:25px;line-height:1.2;margin:24px 0 16px;font-weight:600}.side-note p{font-size:14px;color:#665d70;line-height:1.75;margin:0}.small-arrow{font-size:25px;color:#897a9d;align-self:flex-end}
+    .side-note{color:inherit;text-decoration:none;transition:transform .2s,border-color .2s,box-shadow .2s}
+    .side-note:hover{transform:translateY(-3px);border-color:#c7b9d8;box-shadow:0 20px 40px rgba(31,23,42,.1)}
+    .side-note:focus-visible{outline:3px solid #8063ac;outline-offset:4px}
+    .side-note .now-next{display:grid;gap:23px}
+    .now-next-item+.now-next-item{border-top:1px solid #d9d2e2;padding-top:22px}
+    .now-next-item h3{margin:10px 0 9px;font-size:22px}
+    .side-note .small-arrow{font-size:12px;font-weight:750;margin-top:23px;color:#625080}
     .projects-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.project-card{overflow:hidden;transition:transform .25s,box-shadow .25s}.project-card:hover{transform:translateY(-5px);box-shadow:0 24px 55px rgba(31,23,42,.1)}
     .project-info{padding:29px 27px 30px}.project-category{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:#827493;margin-bottom:12px}.project-info h3{font-size:21px;font-weight:650;line-height:1.23;margin:0 0 10px}.project-info p{color:#77717d;line-height:1.7;font-size:13.5px;margin:0 0 18px}.tags{display:flex;gap:7px;flex-wrap:wrap}.tag{font-size:11px;color:#655e70;border:1px solid #e9e5e9;padding:6px 9px;border-radius:7px;background:#faf9fa}
     .projects-footer{display:flex;justify-content:flex-start;margin-top:24px}.projects-more{display:inline-flex;align-items:center;gap:12px;padding:13px 18px;border:1px solid #d6cee2;border-radius:12px;color:#4f3f77;background:#eeebf7;font-size:13px;font-weight:750;transition:background .2s,transform .2s}.projects-more:hover{background:#e2dcef;transform:translateY(-2px)}
@@ -47,7 +54,7 @@
     .contact-panel{background:#292238;color:#fff;border-radius:23px;margin:80px 0 30px;padding:50px 55px;display:flex;align-items:center;justify-content:space-between;gap:25px}.contact-panel h2{font-size:34px;font-weight:600;margin:0 0 13px}.contact-panel p{font-size:14px;color:#cfc7d6;line-height:1.7;margin:0;max-width:530px}.contact-links{display:flex;gap:10px;flex-wrap:wrap}.contact-links a{font-size:13px;font-weight:700;padding:13px 18px;border:1px solid #756982;border-radius:99px;white-space:nowrap;transition:background .2s}.contact-links a:hover{background:#51445f}
     footer{padding:0 0 33px;display:flex;gap:20px;align-items:center;justify-content:space-between;font-size:12px;color:#817b84}.footer-links{display:flex;gap:19px}.footer-links a:hover{color:#453a59}
     @media(max-width:900px){.hero-panel{padding:57px 45px;min-height:410px}.avatar-wrap{flex-basis:180px;height:210px}.avatar{width:195px}.projects-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.projects-grid .project-card:last-child{grid-column:span 2}.about-grid{grid-template-columns:1.25fr .8fr}.experience-grid{grid-template-columns:1fr}.contact-panel{padding:42px;align-items:start;flex-direction:column}}
-    @media(max-width:640px){.wrap{padding:0 20px}.nav{height:68px}.nav-links{display:none}.social-icon{width:36px;height:36px}.nav-right{gap:7px}.hero{padding-top:16px}.hero-panel{padding:40px 29px 32px;min-height:auto;display:flex;flex-direction:column-reverse;align-items:flex-start;gap:13px;border-radius:20px}.avatar-wrap{height:117px;flex:unset;width:117px;align-self:flex-end;margin-bottom:-12px}.avatar-back{inset:1px}.avatar-wrap:after{display:none}.avatar{width:122px}h1{font-size:54px;margin:15px 0 18px}.hero-lead{font-size:16px;margin-bottom:24px}.hero-actions{gap:9px}.btn{padding:12px 15px;font-size:12px}.quickline{gap:11px;padding:19px 1px;font-size:12px}.section{padding:57px 0 0}.section-heading{display:block;margin-bottom:23px}.section-note{margin-top:14px}.about-grid,.projects-grid{grid-template-columns:1fr}.about-copy,.side-note{padding:26px}.side-note h3{font-size:23px}.projects-grid .project-card:last-child{grid-column:auto}.experience-card{padding:24px 22px}.interest-block{grid-template-columns:1fr;gap:10px}.contact-panel{margin-top:60px;padding:33px 28px}.contact-panel h2{font-size:29px}footer{align-items:flex-start;flex-direction:column;gap:13px}}
+    @media(max-width:640px){.wrap{padding:0 20px}.nav{height:68px}.nav-links{display:none}.social-icon{width:36px;height:36px}.nav-right{gap:7px}.hero{padding-top:16px}.hero-panel{padding:40px 29px 32px;min-height:auto;display:flex;flex-direction:column-reverse;align-items:flex-start;gap:13px;border-radius:20px}.avatar-wrap{height:117px;flex:unset;width:117px;align-self:flex-end;margin-bottom:-12px}.avatar-back{inset:1px}.avatar-wrap:after{display:none}.avatar{width:122px}h1{font-size:54px;margin:15px 0 18px}.hero-lead{font-size:16px;margin-bottom:24px}.hero-actions{gap:9px}.btn{padding:12px 15px;font-size:12px}.quickline{gap:11px;padding:19px 1px;font-size:12px}.section{padding-block:57px 0}.section-heading{display:block;margin-bottom:23px}.section-note{margin-top:14px}.about-grid,.projects-grid{grid-template-columns:1fr}.about-copy,.side-note{padding:26px}.side-note h3{font-size:23px}.projects-grid .project-card:last-child{grid-column:auto}.experience-card{padding:24px 22px}.interest-block{grid-template-columns:1fr;gap:10px}.contact-panel{margin-top:60px;padding:33px 28px}.contact-panel h2{font-size:29px}footer{align-items:flex-start;flex-direction:column;gap:13px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
   
 
@@ -80,6 +87,68 @@
 @media(max-width:900px){.archive-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.detail-layout{grid-template-columns:1fr}}
 @media(max-width:640px){.archive-intro{padding-top:43px}.archive-grid{grid-template-columns:1fr}.filter-row{align-items:start}.detail-header{padding-top:40px}.detail-body,.detail-side{padding:24px}.archive-grid .project-info{min-height:auto}}
 
+
+/* Portfolio photography and project detail sections */
+.project-thumb{display:block;width:100%;height:155px;object-fit:cover;border-radius:12px;margin:-3px 0 17px;background:#eeeaf1}
+.project-card .project-info{min-height:0}
+.detail-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:19px 0 27px}
+.detail-gallery figure{margin:0}.detail-gallery img{display:block;width:100%;height:auto;max-height:440px;object-fit:contain;border-radius:12px;background:#f2f0f3;border:1px solid var(--line)}
+.detail-gallery figure:first-child:nth-last-child(1){grid-column:1/-1}
+.detail-section{margin-top:35px;border-top:1px solid var(--line);padding-top:25px}
+.detail-section h2{margin:0 0 18px}.detail-section ul{padding-left:22px;color:#625d68;font-size:15px;line-height:1.8}
+.detail-side .field-value .tag{margin:2px 4px 2px 0}
+@media(max-width:640px){.detail-gallery{grid-template-columns:1fr}.project-thumb{height:170px}}
+
+
+/* V10: compact hero, balanced introduction, and two reading cards */
+.avatar-wrap,.avatar-back,.avatar{display:none}
+.hero-panel{justify-content:flex-start}
+.about-grid{grid-template-columns:minmax(0,1.4fr) minmax(280px,.9fr);align-items:start}
+.about-copy{padding:32px 36px}
+.about-copy p{line-height:1.7;margin-bottom:12px}
+.current-inline{border-top:1px solid var(--line);margin-top:22px;padding-top:20px}
+.current-inline .small-label{font-size:11px;color:#777084;font-weight:750;letter-spacing:.12em;text-transform:uppercase}
+.current-inline p{font-size:14px;margin:8px 0 0;color:#665d70;line-height:1.6}
+.side-note{min-height:220px;padding:30px 32px;justify-content:space-between}
+.side-note h3{margin:17px 0 10px;font-size:23px}
+.side-note .small-arrow{margin-top:19px}
+.reading-section{margin-top:28px}
+.reading-heading{font-size:12px;text-transform:uppercase;letter-spacing:.13em;font-weight:800;color:#847693;margin-bottom:13px}
+.reading-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.reading-grid .reading-card{margin:0;min-width:0;padding:21px;align-items:flex-start}
+.reading-grid .reading-card>div:last-child{min-width:0}
+.reading-grid .reading-title{font-size:17px;line-height:1.25}
+.reading-grid .reading-meta{line-height:1.55}
+.reading-link{display:inline-block;font-size:12px;color:#6553a1;font-weight:750;margin-top:9px}
+@media(max-width:900px){.hero-panel{padding:47px 43px;min-height:0}.about-grid{grid-template-columns:minmax(0,1fr) minmax(240px,.8fr)}.about-copy{padding:27px}.side-note{padding:26px}.reading-grid{gap:13px}}
+@media(max-width:640px){.hero-panel{padding:34px 28px;flex-direction:row;gap:0}.hero-copy{max-width:100%}.hero h1{font-size:clamp(47px,12vw,58px);margin:13px 0 14px}.hero-lead{margin-bottom:22px}.about-grid,.reading-grid{grid-template-columns:1fr}.side-note{min-height:0}.reading-grid .reading-card{padding:20px}}
+
+/* V11: mobile rhythm and progressive project-card rendering. */
+@media (max-width:640px) {
+  .hero{padding-top:14px}
+  .hero-panel{padding:29px 25px 30px;border-radius:20px}
+  .hero h1{font-size:clamp(42px,11vw,53px);margin:11px 0 12px}
+  .hero-lead{font-size:15px;line-height:1.55;margin-bottom:18px}
+  .hero-actions{gap:9px}
+  .quickline{padding:14px 2px 4px;gap:7px 11px;line-height:1.6}
+  .section{padding-block:35px 0}
+  .section-heading{margin-bottom:17px}
+  .section-heading h2{font-size:clamp(29px,8vw,36px)}
+  .section-note{margin-top:9px;line-height:1.5}
+  .about-grid{gap:13px}
+  .about-copy,.side-note{padding:23px}
+  .about-copy p{font-size:14.5px;line-height:1.7}
+  .current-inline{margin-top:16px;padding-top:15px}
+  .side-note h3{font-size:21px}
+  .projects-grid{gap:13px}
+  .project-info{padding:22px 21px 23px}
+  .projects-footer{margin-top:17px}
+  .experience-grid{gap:13px}
+  .reading-section{margin-top:22px}
+  .reading-grid{gap:12px}
+  footer{padding-top:25px}
+}
+@media(max-width:380px){.wrap{padding-left:16px;padding-right:16px}.hero-panel{padding:26px 21px}.hero-actions .btn{padding:11px 13px}}
 </style>
 </head>
 <body data-page="home">
@@ -104,7 +173,7 @@
           <p class="hero-lead">Final-year Aerospace Engineering student at UWE Bristol, with an interest in structures, manufacturing and the practical side of engineering.</p>
           <div class="hero-actions"><a class="btn btn-primary" href="#projects">Selected projects <span aria-hidden="true">↗</span></a><a class="btn btn-ghost" href="#about">A bit about me <span aria-hidden="true">↓</span></a></div>
         </div>
-        <div class="avatar-wrap"><div class="avatar-back" aria-hidden="true"></div><img class="avatar" src="memoji.png" alt="Cartoon portrait of Dec wearing glasses" width="245" height="245"></div>
+
       </div>
       <div class="quickline"><strong>Bristol, UK</strong><span class="sep"></span><span>Aerospace Engineering BEng</span><span class="sep"></span><span>UWE Bristol · Class of 2027</span></div>
     </div>
@@ -113,16 +182,24 @@
       <div class="section-heading"><div><div class="overline">01 / Introduction</div><h2 id="about-title">A little about me</h2></div><p class="section-note"></p></div>
       <div class="about-grid">
         <div class="about-copy">
-          <p>I'm Dec, a final-year <strong>Aerospace Engineering student at UWE Bristol</strong>. I enjoy the practical side of engineering — designing, making and testing things.</p>
+          <p>I’m Dec, a final-year <strong>Aerospace Engineering student at UWE Bristol</strong>. I enjoy the practical side of engineering — designing, making and testing things.</p>
           <p>I've worked in <strong>defence logistics, retail and bicycle maintenance</strong> alongside my studies. Outside university, you'll usually find me cycling, tinkering with bikes or 3D printing.</p>
+          <div class="current-inline"><span class="small-label">Currently</span><p>Finishing my degree and working part-time as a cycle mechanic.</p></div>
         </div>
-        <aside class="side-note"><div><div class="small-label">Currently</div><h3>Final year at UWE.</h3><p>Studying Aerospace Engineering and working part-time as a cycle mechanic.</p></div><span class="small-arrow" aria-hidden="true">↗</span></aside>
+        <a class="side-note" href="https://www.linkedin.com/in/declan-g-23538a166/" target="_blank" rel="noopener noreferrer" aria-label="Up next: Technical Engineering Graduate Scheme at the Submarine Delivery Agency — view my LinkedIn profile">
+          <div><div class="small-label">Up next</div><h3>Technical Engineering Graduate Scheme</h3><p>Submarine Delivery Agency</p></div>
+          <span class="small-arrow" aria-hidden="true">View on LinkedIn ↗</span>
+        </a>
       </div>
     </section>
 
     <section id="projects" class="section wrap" aria-labelledby="projects-title">
-      <div class="section-heading"><div><div class="overline">02 / Portfolio</div><h2 id="projects-title">Latest projects</h2></div><p class="section-note">Recent completed work, from university and beyond.</p></div>
-      <div class="projects-grid" id="latest-projects" aria-live="polite"></div>
+      <div class="section-heading"><div><div class="overline">02 / Portfolio</div><h2 id="projects-title">Latest projects</h2></div><p class="section-note">The latest additions to my project archive.</p></div>
+      <div class="projects-grid" id="latest-projects" aria-live="polite">
+<article class="project-card"><a class="project-card-link" href="projects/project.html?id=xperia-teardown"><div class="project-info"><div class="project-meta"><span>Personal · 2026</span><span class="card-arrow">↗</span></div><h3>Xperia XA2 Teardown &amp; Handheld Emulator Conversion</h3><p>Further development based on previous project.</p><div class="tags"><span class="tag" data-tone="blue">In progress</span></div><div class="tags"><span class="tag" data-tone="orange">3D printing</span><span class="tag" data-tone="purple">CAD</span></div></div></a></article>
+<article class="project-card"><a class="project-card-link" href="projects/project.html?id=arduino-uno-case"><div class="project-info"><img class="project-thumb" src="projects/images/arduino-uno-case-01.webp" alt="Arduino UNO R3 Clone Case project photograph" loading="lazy"><div class="project-meta"><span>Personal · 2026</span><span class="card-arrow">↗</span></div><h3>Arduino UNO R3 Clone Case</h3><p>A practical remix of an Arduino case, adding USB-C clearance and an M3 heat-set insert.</p><div class="tags"><span class="tag" data-tone="green">Completed</span></div><div class="tags"><span class="tag" data-tone="orange">3D printing</span><span class="tag" data-tone="purple">CAD</span></div></div></a></article>
+<article class="project-card"><a class="project-card-link" href="projects/project.html?id=xperia-controller-enclosure"><div class="project-info"><img class="project-thumb" src="projects/images/xperia-controller-enclosure-01.webp" alt="Sony Xperia XA2 Emulator Handheld Enclosure project photograph" loading="lazy"><div class="project-meta"><span>Personal · 2026</span><span class="card-arrow">↗</span></div><h3>Sony Xperia XA2 Emulator Handheld Enclosure</h3><p>A custom FDM-printed enclosure fitting a Sony Xperia XA2 into an iPega PG-9087S controller.</p><div class="tags"><span class="tag" data-tone="amber">Prototype</span></div><div class="tags"><span class="tag" data-tone="orange">3D printing</span><span class="tag" data-tone="purple">CAD</span></div></div></a></article>
+</div>
       <div class="projects-footer"><a class="projects-more" href="projects/">See more of my work <span aria-hidden="true">↗</span></a></div>
     </section>
 
@@ -149,10 +226,11 @@
       <div class="interest-block"><strong>Engineering</strong><p>Aircraft design, materials, additive manufacturing and practical problem-solving.</p></div>
       <div class="interest-block"><strong>Beyond engineering</strong><p>Cycling, running, bicycle mechanics, 3D printing and cadet volunteering.</p></div>
       <div class="tool-row" aria-label="Software and tools I've used"><span>SolidWorks</span><span>ANSYS</span><span>MATLAB</span><span>3D printing / FDM</span><span>CAD &amp; prototyping</span><span>HTML / CSS / JavaScript</span></div>
-      <a class="reading-card" href="https://www.amazon.co.uk/Bicycling-Science-Press-Gordon-Wilson/dp/0262538407" target="_blank" rel="noopener noreferrer" aria-label="Bicycling Science, 3rd Edition — view book on Amazon"><div class="reading-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 6c-2.4-1.4-5.7-1.6-9-1v14c3.3-.6 6.6-.4 9 1 2.4-1.4 5.7-1.6 9-1V5c-3.3-.6-6.6-.4-9 1Z"/><path d="M12 6v14"/></svg></div><div><div class="reading-label">Currently reading</div><h3 class="reading-title">Bicycling Science</h3><p class="reading-meta">3rd Edition · View on Amazon ↗</p></div></a>
+      <div class="reading-section"><div class="reading-heading">Currently reading</div><div class="reading-grid">
+        <a class="reading-card" href="https://www.amazon.co.uk/Bicycling-Science-Press-Gordon-Wilson/dp/0262538407" target="_blank" rel="noopener noreferrer" aria-label="Bicycling Science, 3rd Edition — view on Amazon"><div class="reading-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 6c-2.4-1.4-5.7-1.6-9-1v14c3.3-.6 6.6-.4 9 1 2.4-1.4 5.7-1.6 9-1V5c-3.3-.6-6.6-.4-9 1Z"/><path d="M12 6v14"/></svg></div><div><h3 class="reading-title">Bicycling Science</h3><p class="reading-meta">3rd Edition · Gordon Wilson</p><span class="reading-link">View on Amazon ↗</span></div></a>
+        <a class="reading-card" href="https://www.amazon.co.uk/Silent-Deep-Royal-Submarine-Service/dp/0241959489/ref=tmm_pap_swatch_0" target="_blank" rel="noopener noreferrer" aria-label="The Silent Deep by Peter Hennessy and James Jinks — view on Amazon"><div class="reading-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 6c-2.4-1.4-5.7-1.6-9-1v14c3.3-.6 6.6-.4 9 1 2.4-1.4 5.7-1.6 9-1V5c-3.3-.6-6.6-.4-9 1Z"/><path d="M12 6v14"/></svg></div><div><h3 class="reading-title">The Silent Deep</h3><p class="reading-meta">Peter Hennessy &amp; James Jinks</p><span class="reading-link">View on Amazon ↗</span></div></a>
+      </div></div>
     </section>
-
-    <div class="wrap"><section class="contact-panel" aria-labelledby="contact-title"><div><div class="overline" style="color:#baabcf">05 / Say hello</div><h2 id="contact-title">Get in touch.</h2><p>Feel free to get in touch.</p></div><div class="contact-links"><a href="mailto:declangavin@icloud.com">Email ↗</a><a href="https://www.linkedin.com/in/declan-g-23538a166/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div></section></div>
   </main>
   <footer class="wrap"><span>© <span id="year">2026</span> Dec Gavin · Built with HTML &amp; CSS</span><div class="footer-links"><a href="https://www.instagram.com/declang1505/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="#top">Back to top ↑</a></div></footer>
   <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
