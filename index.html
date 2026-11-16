@@ -49,9 +49,40 @@
     @media(max-width:900px){.hero-panel{padding:57px 45px;min-height:410px}.avatar-wrap{flex-basis:180px;height:210px}.avatar{width:195px}.projects-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.projects-grid .project-card:last-child{grid-column:span 2}.about-grid{grid-template-columns:1.25fr .8fr}.experience-grid{grid-template-columns:1fr}.contact-panel{padding:42px;align-items:start;flex-direction:column}}
     @media(max-width:640px){.wrap{padding:0 20px}.nav{height:68px}.nav-links{display:none}.social-icon{width:36px;height:36px}.nav-right{gap:7px}.hero{padding-top:16px}.hero-panel{padding:40px 29px 32px;min-height:auto;display:flex;flex-direction:column-reverse;align-items:flex-start;gap:13px;border-radius:20px}.avatar-wrap{height:117px;flex:unset;width:117px;align-self:flex-end;margin-bottom:-12px}.avatar-back{inset:1px}.avatar-wrap:after{display:none}.avatar{width:122px}h1{font-size:54px;margin:15px 0 18px}.hero-lead{font-size:16px;margin-bottom:24px}.hero-actions{gap:9px}.btn{padding:12px 15px;font-size:12px}.quickline{gap:11px;padding:19px 1px;font-size:12px}.section{padding:57px 0 0}.section-heading{display:block;margin-bottom:23px}.section-note{margin-top:14px}.about-grid,.projects-grid{grid-template-columns:1fr}.about-copy,.side-note{padding:26px}.side-note h3{font-size:23px}.projects-grid .project-card:last-child{grid-column:auto}.experience-card{padding:24px 22px}.interest-block{grid-template-columns:1fr;gap:10px}.contact-panel{margin-top:60px;padding:33px 28px}.contact-panel h2{font-size:29px}footer{align-items:flex-start;flex-direction:column;gap:13px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
-  </style>
+  
+
+/* Unified portfolio components */
+.project-card-link{display:block;height:100%;color:inherit;text-decoration:none}
+.project-card-link:focus-visible{outline:3px solid #927dce;outline-offset:3px;border-radius:18px}
+.project-card{height:100%;display:flex;flex-direction:column}
+.project-card .project-info{height:100%;display:flex;flex-direction:column}
+.project-card .tags{margin-top:auto}
+.project-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:13px;font-size:11px;color:#857d88;font-weight:700}
+.card-arrow{color:var(--accent);font-size:18px}
+.tag{font-weight:700;border:1px solid transparent}
+.tag[data-tone="purple"]{color:#59458f;background:#f0eafc;border-color:#e1d5f4}
+.tag[data-tone="blue"]{color:#275784;background:#eaf3fb;border-color:#d3e5f5}
+.tag[data-tone="teal"]{color:#17655e;background:#e4f5f0;border-color:#c9e9df}
+.tag[data-tone="amber"]{color:#80531b;background:#fff2dc;border-color:#f2dfbd}
+.tag[data-tone="rose"]{color:#8d4c65;background:#faeaf0;border-color:#efd5df}
+.tag[data-tone="slate"]{color:#4d5969;background:#edf0f4;border-color:#dee3e9}
+.tag[data-tone="green"]{color:#306a48;background:#e6f5e9;border-color:#cde8d3}
+.tag[data-tone="gray"]{color:#63616d;background:#f2f1f4;border-color:#e7e4ec}
+.tag[data-tone="orange"]{color:#8f5927;background:#fff0e2;border-color:#f4dcc6}
+.archive-intro{padding:68px 0 30px}.archive-intro h1{font-size:clamp(44px,6vw,74px);color:var(--ink);margin:15px 0 12px;letter-spacing:-.065em}.archive-intro p{max-width:650px;color:var(--muted);font-size:15px;line-height:1.75}.back-link{display:inline-flex;align-items:center;gap:9px;color:var(--accent);font-size:13px;font-weight:750}
+.filter-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin:10px 0 25px}.filter-controls{display:flex;gap:7px;flex-wrap:wrap}.filter-button{cursor:pointer;border:1px solid #e0dce5;border-radius:100px;background:#fff;padding:10px 16px;font-size:12px;font-weight:750;color:#706a76;transition:background .2s}.filter-button[aria-pressed="true"]{background:#30273f;color:#fff;border-color:#30273f}.filter-button:hover:not([aria-pressed="true"]){background:#ebe8f0}.result-count{color:#8c8590;font-size:12px}
+.archive-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-bottom:65px}.archive-grid .project-info{min-height:235px}.archive-grid .project-info h3{font-size:21px}
+.card-tags-heading{color:#908797;font-size:10px;text-transform:uppercase;letter-spacing:.1em;margin:15px 0 7px;font-weight:850}
+.card-tool-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.card-tool-row .tag{font-size:10px;padding:5px 8px}
+.no-results{color:var(--muted);padding:25px 0}
+.detail-header{padding:64px 0 18px}.detail-header h1{color:var(--ink);font-size:clamp(36px,5.6vw,64px);letter-spacing:-.065em;margin:15px 0 14px}.detail-lead{font-size:17px;color:#66606c;max-width:760px;line-height:1.75}
+.detail-layout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(240px,.8fr);gap:24px;margin:25px 0 80px}.detail-body,.detail-side{background:#fff;border:1px solid var(--line);border-radius:20px;padding:34px 36px;box-shadow:var(--shadow)}.detail-body p{color:#625d68;font-size:15px;line-height:1.85}.detail-body h2{font-size:23px;margin-top:32px}.detail-body h2:first-child{margin-top:0}.detail-side{align-self:start;padding:25px}.detail-side h2{font-size:17px;margin-bottom:19px}.field{padding:15px 0;border-top:1px solid var(--line)}.field-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8a8291;font-weight:850;margin-bottom:8px}.field-value{font-size:13px;color:#514b57;line-height:1.6}.external-link{display:inline-flex;gap:8px;align-items:center;font-size:13px;color:#5e4a91;font-weight:700;margin-top:8px}.detail-image{max-width:100%;height:auto;border-radius:13px;display:block;margin:20px 0}
+@media(max-width:900px){.archive-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.detail-layout{grid-template-columns:1fr}}
+@media(max-width:640px){.archive-intro{padding-top:43px}.archive-grid{grid-template-columns:1fr}.filter-row{align-items:start}.detail-header{padding-top:40px}.detail-body,.detail-side{padding:24px}.archive-grid .project-info{min-height:auto}}
+
+</style>
 </head>
-<body>
+<body data-page="home">
   <header class="site-header">
     <div class="wrap nav">
       <a class="monogram" href="#top" aria-label="Dec Gavin, back to top">DG</a>
@@ -90,12 +121,8 @@
     </section>
 
     <section id="projects" class="section wrap" aria-labelledby="projects-title">
-      <div class="section-heading"><div><div class="overline">02 / University work</div><h2 id="projects-title">Selected projects</h2></div><p class="section-note">A few completed projects from my degree.</p></div>
-      <div class="projects-grid">
-        <article class="project-card"><div class="project-info"><div class="project-category">University · Aircraft design</div><h3>UAV preliminary design</h3><p>Designed and analysed a small unmanned aircraft, covering aerodynamics, performance and flight characteristics.</p><div class="tags"><span class="tag">Aerodynamics</span><span class="tag">Performance</span></div></div></article>
-        <article class="project-card"><div class="project-info"><div class="project-category">University · Experimental aerodynamics</div><h3>Wind-tunnel testing</h3><p>Investigated the aerodynamic behaviour of a NACA 0012 aerofoil at different airspeeds and angles of attack.</p><div class="tags"><span class="tag">Wind tunnel</span><span class="tag">Data analysis</span></div></div></article>
-        <article class="project-card"><div class="project-info"><div class="project-category">University · Flight performance</div><h3>Aircraft climb analysis</h3><p>Used MATLAB to analyse climb performance data and compare calculated results with aircraft performance information.</p><div class="tags"><span class="tag">MATLAB</span><span class="tag">Flight mechanics</span></div></div></article>
-      </div>
+      <div class="section-heading"><div><div class="overline">02 / Portfolio</div><h2 id="projects-title">Latest projects</h2></div><p class="section-note">Recent completed work, from university and beyond.</p></div>
+      <div class="projects-grid" id="latest-projects" aria-live="polite"></div>
       <div class="projects-footer"><a class="projects-more" href="projects/">See more of my work <span aria-hidden="true">↗</span></a></div>
     </section>
 
@@ -129,5 +156,6 @@
   </main>
   <footer class="wrap"><span>© <span id="year">2026</span> Dec Gavin · Built with HTML &amp; CSS</span><div class="footer-links"><a href="https://www.instagram.com/declang1505/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="#top">Back to top ↑</a></div></footer>
   <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+<script src="projects/data.js"></script><script src="projects/portfolio.js"></script>
 </body>
 </html>
