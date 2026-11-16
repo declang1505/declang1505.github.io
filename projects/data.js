@@ -51,7 +51,7 @@ window.PORTFOLIO_PROJECTS = [
         "bullets": [
           "Printer: Elegoo Centauri Carbon",
           "Material: Flashforge HS PLA Burnt Titanium",
-          "Settings: 210**°C Nozzle, 60°C Bed**"
+          "Settings: 210°C nozzle, 60°C bed"
         ],
         "images": [
           {

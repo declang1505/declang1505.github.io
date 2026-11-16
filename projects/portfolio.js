@@ -3,6 +3,29 @@
   const ordered=records.slice().sort((a,b)=>(b.sort||0)-(a.sort||0));
   const palette={"Aircraft design":"purple","Aerodynamics":"blue","Performance":"teal","Testing":"amber","Data analysis":"slate","Flight mechanics":"blue","3D printing":"orange","Electronics":"teal","Enclosures":"rose","MATLAB":"purple","SolidWorks":"blue","Orca Slicer":"orange","FDM":"amber","Wind tunnel":"teal","Completed":"green","Done":"green","Prototype":"amber","In progress":"blue","Ongoing":"amber","Planned":"slate","CAD":"purple","Arduino":"teal"};
   function elt(tag,cls,txt){const n=document.createElement(tag);if(cls)n.className=cls;if(txt!==undefined)n.textContent=txt;return n;}
+  // Safely render the limited inline Markdown used by exported Notion text.
+  // Supports bold text and Markdown hyperlinks without injecting raw HTML.
+  function appendFormatted(target, source){
+    const token=/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)|\*\*([^*]+)\*\*/g;
+    let cursor=0, match;
+    while((match=token.exec(source))!==null){
+      if(match.index>cursor)target.append(document.createTextNode(source.slice(cursor,match.index)));
+      if(match[2]){
+        const a=document.createElement('a');
+        a.href=match[2];a.target='_blank';a.rel='noopener noreferrer';
+        a.className='inline-project-link';
+        const label=match[1];
+        if(label.startsWith('**')&&label.endsWith('**')){
+          const strong=document.createElement('strong');strong.textContent=label.slice(2,-2);a.append(strong);
+        }else{a.textContent=label;}
+        target.append(a);
+      }else if(match[3]){
+        const strong=document.createElement('strong');strong.textContent=match[3];target.append(strong);
+      }
+      cursor=token.lastIndex;
+    }
+    if(cursor<source.length)target.append(document.createTextNode(source.slice(cursor)));
+  }
   function chip(label){const n=elt('span','tag',label);n.dataset.tone=palette[label]||'gray';return n;}
   function card(p){
     const art=elt('article','project-card');const link=elt('a','project-card-link');link.href=(document.body.dataset.page==='home'?'projects/':'')+'project.html?id='+encodeURIComponent(p.id);
@@ -26,12 +49,12 @@
     if(p.id==='xperia-controller-enclosure')document.body.classList.add('xperia-detail');
     const header=elt('div','detail-header');const back=elt('a','back-link','← All projects');back.href='./';header.append(back,elt('div','overline','Portfolio / '+p.category),elt('h1','',p.title),elt('p','detail-lead',p.summary));
     const layout=elt('div','detail-layout');const body=elt('article','detail-body');if(!p.sections||!p.sections.length)body.append(elt('h2','','Overview'));
-    (p.body||[]).forEach(s=>body.append(elt('p','',s)));
+    (p.body||[]).forEach(s=>{const paragraph=elt('p');appendFormatted(paragraph,s);body.append(paragraph);});
     if(p.sections&&p.sections.length){
       p.sections.forEach(s=>{
         const section=elt('section','detail-section');section.append(elt('h2','',s.title));
-        (s.paragraphs||[]).forEach(text=>section.append(elt('p','',text)));
-        if(s.bullets&&s.bullets.length){const ul=elt('ul');s.bullets.forEach(b=>ul.append(elt('li','',b)));section.append(ul);}
+        (s.paragraphs||[]).forEach(text=>{const paragraph=elt('p');appendFormatted(paragraph,text);section.append(paragraph);});
+        if(s.bullets&&s.bullets.length){const ul=elt('ul');s.bullets.forEach(b=>{const item=elt('li');appendFormatted(item,b);ul.append(item);});section.append(ul);}
         if(s.images&&s.images.length){const gallery=elt('div','detail-gallery');s.images.forEach(im=>{const fig=elt('figure');const a=elt('a');a.href=im.src;a.target='_blank';a.rel='noopener noreferrer';const img=elt('img');img.src=im.src;img.alt=im.alt||p.title+' project photograph';img.loading='lazy';a.append(img);fig.append(a);if(im.caption)fig.append(elt('figcaption','',im.caption));gallery.append(fig);});section.append(gallery);}
         body.append(section);
       });

@@ -40,3 +40,6 @@ Replaced the Xperia enclosure project photography with user-supplied originals i
 - Removed the unneeded horizontal divider above Overview and other project section headings on every project detail page.
 - Reprocessed the three Xperia enclosure CG renders to remove low-opacity noisy background pixels and flatten them onto a consistent light-grey background; the originals were provided in the previous turn. This is an image-processing fix, not a new rendering of the CAD.
 - Updated the image references in projects/data.js.
+
+
+V15: Fixed inline Markdown links/bold text in project descriptions and corrected Arduino printing temperature formatting.
