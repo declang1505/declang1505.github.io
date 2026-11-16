@@ -155,7 +155,7 @@ window.PORTFOLIO_PROJECTS = [
     "date": "2026-01-04",
     "sort": 20260104,
     "status": "Prototype",
-    "summary": "A custom FDM-printed enclosure fitting a Sony Xperia XA2 into an iPega PG-9087S controller.",
+    "summary": "A custom 3D-printed enclosure to mount a Sony Xperia XA2 within an iPega PG-9087S controller.",
     "topics": [
       "3D printing",
       "CAD"
@@ -176,37 +176,29 @@ window.PORTFOLIO_PROJECTS = [
         "title": "Overview",
         "paragraphs": [
           "This project involved designing and 3D printing a custom enclosure to securely mount a Sony Xperia XA2 into an iPega PG-9087S controller, filling the gaps around the phone to create a clean, uniform, console-like appearance. The phone runs LineageOS 23 with the ES-DE frontend, using RetroArch, PPSSPP, and M64Plus FZ for emulation.",
-          "The enclosure is intentionally non-permanent, allowing full access to the phone’s power and volume buttons, though charging is not possible while installed. A key challenge of the project was the complete lack of technical drawings for the controller; all CAD work was produced in SolidWorks using hand measurements, iterative prototyping, and careful tracing of the controller’s extending arm curvature to achieve a precise fit."
+          "The enclosure is intentionally non-permanent, allowing full access to the phone’s power and volume buttons, though charging is not possible while installed. A key challenge was the lack of technical drawings for the controller: the CAD model was developed in SolidWorks using hand measurements, iterative prototypes and careful tracing of the extending arm curvature to achieve a precise fit."
         ],
         "bullets": [],
         "images": [
           {
-            "src": "images/xperia-controller-enclosure-01.webp",
-            "alt": "Sony Xperia XA2 Emulator Handheld Enclosure — IMG 0630.jpg"
+            "src": "images/xa2-01-prototype-workbench.jpg",
+            "alt": "Handheld enclosure prototype beside digital calipers and soldering iron",
+            "caption": "Prototype enclosure and measurements"
           },
           {
-            "src": "images/xperia-controller-enclosure-02.webp",
-            "alt": "Sony Xperia XA2 Emulator Handheld Enclosure — IMG 0632.jpg"
+            "src": "images/xa2-04-rear-assembly.jpg",
+            "alt": "Rear of the assembled handheld showing controller and central enclosure",
+            "caption": "Rear mounting arrangement"
           },
           {
-            "src": "images/xperia-controller-enclosure-03.webp",
-            "alt": "Sony Xperia XA2 Emulator Handheld Enclosure — 1a90e3e2-598d-4956-8e6f-ea64e192c97b.png"
+            "src": "images/xa2-02-front-view.png",
+            "alt": "Front view of Xperia XA2 mounted inside iPega controller",
+            "caption": "Completed prototype, front view"
           },
           {
-            "src": "images/xperia-controller-enclosure-04.webp",
-            "alt": "Sony Xperia XA2 Emulator Handheld Enclosure — Untitled Project.png"
-          },
-          {
-            "src": "images/xperia-controller-enclosure-05.webp",
-            "alt": "Sony Xperia XA2 Emulator Handheld Enclosure — Untitled Project (3).png"
-          },
-          {
-            "src": "images/xperia-controller-enclosure-06.webp",
-            "alt": "Sony Xperia XA2 Emulator Handheld Enclosure — Untitled Project (5).png"
-          },
-          {
-            "src": "images/xperia-controller-enclosure-07.webp",
-            "alt": "Sony Xperia XA2 Emulator Handheld Enclosure — Untitled Project (4).png"
+            "src": "images/xa2-03-running-emulator.png",
+            "alt": "Handheld powered on and showing Nintendo 64 games in emulator frontend",
+            "caption": "Emulation frontend running on the Xperia XA2"
           }
         ]
       },
@@ -216,24 +208,29 @@ window.PORTFOLIO_PROJECTS = [
         "bullets": [],
         "images": [
           {
-            "src": "images/xperia-controller-enclosure-08.webp",
-            "alt": "Sony Xperia XA2 Emulator Handheld Enclosure — 0dd819fb-4ad1-48aa-8ed7-e59053d41b40.png"
+            "src": "images/xa2-07-cad-design.png",
+            "alt": "SolidWorks model of the phone mounting frame",
+            "caption": "CAD development in SolidWorks"
           },
           {
-            "src": "images/xperia-controller-enclosure-09.webp",
-            "alt": "Sony Xperia XA2 Emulator Handheld Enclosure — a74b8498-d54b-491e-8e59-fdaf9c6c445f.png"
+            "src": "images/xa2-08-slicer-preview.png",
+            "alt": "Green 3D slicing preview of the printed frame",
+            "caption": "Print preparation in Orca Slicer"
           },
           {
-            "src": "images/xperia-controller-enclosure-10.webp",
-            "alt": "Sony Xperia XA2 Emulator Handheld Enclosure — 90f5ab56-728d-470b-9df5-ec7151d46518.png"
+            "src": "images/xa2-09-render-front-clean.jpg",
+            "alt": "Front view of the rendered Xperia enclosure",
+            "caption": "Front CAD rendering"
           },
           {
-            "src": "images/xperia-controller-enclosure-11.webp",
-            "alt": "Sony Xperia XA2 Emulator Handheld Enclosure — 08deedbb-397c-435f-aa63-d5073ecb0b07.png"
+            "src": "images/xa2-10-render-perspective-clean.jpg",
+            "alt": "Oblique CAD render of enclosure fitted around the Xperia",
+            "caption": "Perspective CAD rendering"
           },
           {
-            "src": "images/xperia-controller-enclosure-12.webp",
-            "alt": "Sony Xperia XA2 Emulator Handheld Enclosure — IMG 0645.jpg"
+            "src": "images/xa2-11-render-opposite-clean.jpg",
+            "alt": "Alternative perspective CAD rendering of the enclosure",
+            "caption": "Alternative CAD view"
           }
         ]
       },
@@ -243,21 +240,32 @@ window.PORTFOLIO_PROJECTS = [
         "bullets": [
           "Printer: Elegoo Centauri Carbon",
           "Material: Flashforge HS PLA Burnt Titanium",
-          "Settings: 210°C Nozzle, 60°C Bed"
+          "Settings: 210°C nozzle, 60°C bed"
         ],
-        "images": []
+        "images": [
+          {
+            "src": "images/xa2-05-printed-iterations.png",
+            "alt": "Four iterations of the 3D printed enclosure frames",
+            "caption": "Printed design iterations"
+          },
+          {
+            "src": "images/xa2-06-detail-of-fit.jpg",
+            "alt": "Close-up of fitted printed enclosure beside controller buttons",
+            "caption": "Surface finish and fit around the controls"
+          }
+        ]
       },
       {
         "title": "Future Improvements",
-        "paragraphs": [],
-        "bullets": [
-          "The potential evolution of this design is to teardown both the mobile phone and the controller and design a complete shell around them, this would allow for tighter packaging however USB/Headphone jack would need to be moved + SD card access figured out."
+        "paragraphs": [
+          "A potential next step is to disassemble both the phone and controller and design a complete shell around their components. This could allow tighter packaging, although the USB port, headphone jack and SD-card access would need to be addressed."
         ],
+        "bullets": [],
         "images": []
       }
     ],
     "published": true,
-    "image": "images/xperia-controller-enclosure-01.webp"
+    "image": "images/xa2-cover.webp"
   },
   {
     "id": "xperia-teardown",

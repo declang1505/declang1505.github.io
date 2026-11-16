@@ -23,6 +23,7 @@
   function detail(){const host=document.getElementById('project-detail');if(!host)return;const id=new URLSearchParams(location.search).get('id');const p=records.find(x=>x.id===id);
     if(!p){host.append(elt('h1','','Project not found'),elt('p','','This project may not be published yet.'));return;}
     document.title=p.title+' — Dec Gavin';
+    if(p.id==='xperia-controller-enclosure')document.body.classList.add('xperia-detail');
     const header=elt('div','detail-header');const back=elt('a','back-link','← All projects');back.href='./';header.append(back,elt('div','overline','Portfolio / '+p.category),elt('h1','',p.title),elt('p','detail-lead',p.summary));
     const layout=elt('div','detail-layout');const body=elt('article','detail-body');if(!p.sections||!p.sections.length)body.append(elt('h2','','Overview'));
     (p.body||[]).forEach(s=>body.append(elt('p','',s)));
@@ -31,7 +32,7 @@
         const section=elt('section','detail-section');section.append(elt('h2','',s.title));
         (s.paragraphs||[]).forEach(text=>section.append(elt('p','',text)));
         if(s.bullets&&s.bullets.length){const ul=elt('ul');s.bullets.forEach(b=>ul.append(elt('li','',b)));section.append(ul);}
-        if(s.images&&s.images.length){const gallery=elt('div','detail-gallery');s.images.forEach(im=>{const fig=elt('figure');const a=elt('a');a.href=im.src;a.target='_blank';a.rel='noopener noreferrer';const img=elt('img');img.src=im.src;img.alt=im.alt||p.title+' project photograph';img.loading='lazy';a.append(img);fig.append(a);gallery.append(fig);});section.append(gallery);}
+        if(s.images&&s.images.length){const gallery=elt('div','detail-gallery');s.images.forEach(im=>{const fig=elt('figure');const a=elt('a');a.href=im.src;a.target='_blank';a.rel='noopener noreferrer';const img=elt('img');img.src=im.src;img.alt=im.alt||p.title+' project photograph';img.loading='lazy';a.append(img);fig.append(a);if(im.caption)fig.append(elt('figcaption','',im.caption));gallery.append(fig);});section.append(gallery);}
         body.append(section);
       });
     }else if(p.image){const img=elt('img','detail-image');img.src=p.image;img.alt='Project photograph: '+p.title;img.loading='lazy';body.append(img);}

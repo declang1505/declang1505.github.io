@@ -100,11 +100,24 @@
 .detail-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:19px 0 27px}
 .detail-gallery figure{margin:0}.detail-gallery img{display:block;width:100%;height:auto;max-height:440px;object-fit:contain;border-radius:12px;background:#f2f0f3;border:1px solid var(--line)}
 .detail-gallery figure:first-child:nth-last-child(1){grid-column:1/-1}
-.detail-section{margin-top:35px;border-top:1px solid var(--line);padding-top:25px}
+.detail-section{margin-top:35px;padding-top:0}
 .detail-section h2{margin:0 0 18px}.detail-section ul{padding-left:22px;color:#625d68;font-size:15px;line-height:1.8}
 .detail-side .field-value .tag{margin:2px 4px 2px 0}
 @media(max-width:640px){.detail-gallery{grid-template-columns:1fr}.project-thumb{height:170px}}
 
+
+/* Xperia project: readable Notion-style visual narrative with original images */
+.xperia-detail .detail-gallery{display:grid;grid-template-columns:minmax(0,1fr);gap:17px;margin:24px 0 30px}
+.xperia-detail .detail-gallery figure{min-width:0}
+.xperia-detail .detail-gallery img{width:100%;height:auto;max-height:none;object-fit:contain;border-radius:12px;border:1px solid var(--line);background:#faf9fa}
+.xperia-detail .detail-gallery figcaption{padding:8px 3px 0;font-size:12px;line-height:1.45;color:var(--muted)}
+.xperia-detail .detail-section{margin-top:28px;padding-top:0}
+.xperia-detail .detail-section h2{font-size:clamp(22px,2.5vw,27px);line-height:1.25;margin:0 0 16px}
+.xperia-detail .detail-section p{max-width:72ch;margin:0 0 15px;line-height:1.8}
+.xperia-detail .detail-section ul{margin:0 0 20px;padding-left:21px}
+.xperia-detail .detail-layout{grid-template-columns:minmax(0,1.75fr) minmax(225px,.65fr)}
+@media(max-width:900px){.xperia-detail .detail-layout{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:640px){.xperia-detail .detail-body{padding:20px}.xperia-detail .detail-gallery{gap:14px}.xperia-detail .detail-gallery img{border-radius:9px}}
 </style>
 </head>
 <body data-page="detail">
