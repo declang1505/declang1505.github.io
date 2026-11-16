@@ -1,378 +1,138 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Dec Gavin</title>
-
-<!-- iOS / Chrome theme colour -->
-<meta name="theme-color" content="#190646">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
-
-/* Base / Reset */
-html { box-sizing: border-box; }
-*, *:before, *:after { box-sizing: inherit; }
-
-html, body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
-  color: #fff;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  height: auto;
-  min-height: 100%;
-  overflow-x: hidden;
-  background-color: #000;
-}
-
-/* Background image / tint */
-body {
-  background-image:
-    linear-gradient(rgba(25,25,25,0.5), rgba(25,25,25,0.5)),
-    url('wallpaper.jpg');
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: scroll;
-}
-
-/* Desktop: fixed background */
-@media (hover: hover) and (pointer: fine) {
-  body { background-attachment: fixed; min-height: 100vh; }
-}
-
-/* Touch devices: scrollable background */
-@media (hover: none) and (pointer: coarse) {
-  body { background-attachment: scroll; min-height: 100dvh; overflow-y: auto; }
-}
-
-/* Navbar - Glass Effect */
-.navbar {
-    position: fixed;
-    top: calc(env(safe-area-inset-top, 0px) + 15px);
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.12);
-    color: #fff;
-    padding: 10px 10px;
-    border-radius: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: calc(100% - 30px);
-    max-width: 1000px;
-
-    backdrop-filter: blur(6px) saturate(100%) contrast(100%) brightness(100%);
-    -webkit-backdrop-filter: blur(6px) saturate(100%) contrast(100%) brightness(100%);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
-    
-    transition: background 0.3s ease, backdrop-filter 0.3s ease, border 0.3s ease;
-    z-index: 1000;
-}
-
-/* Scroll effect: slightly more transparent when scrolled */
-.navbar.transparent {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(4px) saturate(100%) contrast(100%) brightness(100%);
-    -webkit-backdrop-filter: blur(4px) saturate(100%) contrast(100%) brightness(100%);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.navbar .brand { font-family: 'Montserrat', sans-serif; font-size: 1.2em; margin-left: 10px; font-weight: bold; }
-.navbar .social-links { display: flex; align-items: center; gap: 15px; }
-.navbar .social-links a { font-size: 1.4em; color: #fff; text-decoration: none; transition: color 0.3s ease; }
-.navbar .social-links .instagram:hover { color: #FF6EC7; }
-.navbar .social-links .email:hover { color: #6EB5FF; }
-.navbar .social-links .linkedin:hover { color: #A78FFF; }
-.navbar .social-links .projects:hover { color: #D8C06F; } 
-
-
-/* Header & Content */
-header { display: flex; justify-content: space-between; align-items: center; padding: 100px 20px 50px 20px; max-width: 1000px; margin: 0 auto; }
-header .text { text-align: left; }
-header h1 { font-family: 'Montserrat', sans-serif; font-size: 3em; margin: 0; }
-header p { font-size: 1.5em; margin: 10px 0 0; }
-.profile-placeholder { width: 150px; height: 150px; border-radius: 15px; display: flex; align-items: center; justify-content: center; }
-.profile-placeholder img { width: 300px; height: 300px; border-radius: 15px; }
-
-/* Hover-grow effect for profile image (desktop only) */
-@media (hover: hover) and (pointer: fine) {
-  .profile-placeholder img {
-    transition: transform 0.3s ease;
-  }
-  .profile-placeholder img:hover {
-    transform: scale(1.05);
-  }
-}
-
-/* Sections (compact spacing applied) */
-section {
-  padding: 15px 20px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-section:last-of-type { padding-bottom: 10px; }
-
-h2 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 2em;
-  margin-top: 0;
-  margin-bottom: 6px;
-}
-
-#about p {
-  font-size: 1em;
-  line-height: 1.3;
-  margin-top: 0;
-}
-
-section p,
-section .bubble-list,
-section .career-item {
-  margin-top: 0;
-}
-
-section + section {
-  margin-top: 10px;
-}
-
-/* Bubbles for skills, interests, career items */
-.bubble-list { display: flex; flex-wrap: wrap; gap: 10px; }
-.bubble-list span,
-#career .career-item {
-    background: rgba(255, 255, 255, 0.12);
-    padding: 10px 15px;
-    border-radius: 15px;
-    
-    backdrop-filter: blur(6px) saturate(100%) contrast(100%) brightness(100%);
-    -webkit-backdrop-filter: blur(6px) saturate(100%) contrast(100%) brightness(100%);
-    
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
-    
-    transition: background 0.3s ease, backdrop-filter 0.3s ease, border 0.3s ease;
-}
-
-/* Hover: frosted effect */
-@media (hover: hover) and (pointer: fine) {
-  .bubble-list span:hover,
-  #career .career-item:hover {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px) saturate(120%) contrast(110%) brightness(120%);
-    -webkit-backdrop-filter: blur(10px) saturate(120%) contrast(110%) brightness(120%);
-    border: 1px solid rgba(255,255,255,0.25);
-  }
-}
-
-/* Career section */
-#career .career-item { margin: 10px 0; }
-#career .career-item h3 { font-family: 'Montserrat', sans-serif; margin: 0 0 5px; font-size: 1.2em; }
-#career .career-item .company { font-size: 1em; margin-bottom: 5px; }
-#career .career-item .years { font-size: 0.8em; color: #ccc; }
-
-/* Fix spacing: remove extra top margin on first hidden career item */
-#career .dropdown-content .career-item:first-child { margin-top: 0; }
-
-/* Dropdown/button - Liquid Glass with subtle purple color */
-.dropdown {
-    cursor: pointer;
-    color: #fff;
-    background: linear-gradient(145deg, rgba(137,51,138,0.6), rgba(156,75,165,0.6));
-    border-radius: 20px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1em;
-    margin: 10px auto;
-    border: 1px solid rgba(255,255,255,0.18);
-    padding: 10px 15px;
-    min-width: 120px;
-
-    backdrop-filter: blur(6px) saturate(100%) contrast(100%) brightness(100%);
-    -webkit-backdrop-filter: blur(6px) saturate(100%) contrast(100%) brightness(100%);
-    
-    transition: background 0.3s ease, border 0.3s ease, backdrop-filter 0.3s ease;
-}
-
-/* Hover: slightly brighter, stronger blur */
-@media (hover: hover) and (pointer: fine) {
-  .dropdown:hover {
-    background: linear-gradient(145deg, rgba(156,75,165,0.8), rgba(176,99,194,0.8));
-    backdrop-filter: blur(10px) saturate(120%) contrast(110%) brightness(120%);
-    -webkit-backdrop-filter: blur(10px) saturate(120%) contrast(110%) brightness(120%);
-    border: 1px solid rgba(255,255,255,0.25);
-  }
-}
-
-.dropdown i { margin-left: 5px; transition: transform 0.3s ease; }
-
-/* Smooth dropdown */
-.dropdown-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease;
-}
-.dropdown-content.show {
-    max-height: 1000px;
-}
-
-.center-button { display: flex; justify-content: center; }
-
-/* Responsive */
-@media (max-width: 600px) {
-    .navbar .brand { font-size: 1em; margin-left: 5px; }
-    .navbar .social-links { gap: 10px; }
-    .navbar .social-links a { font-size: 1.2em; }
-    header h1 { font-size: 2em; }
-    header p { font-size: 1.2em; }
-    .profile-placeholder img { width: 200px; height: 200px; }
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f6f3">
+  <meta name="description" content="Dec Gavin — final-year Aerospace Engineering student at UWE Bristol. Engineering projects, experience and interests.">
+  <title>Dec Gavin — Aerospace Engineering Student</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{color-scheme:light;--bg:#f7f6f3;--paper:#fff;--ink:#22212c;--muted:#696875;--line:#e7e5e3;--accent:#6553a1;--accent-soft:#eeebf7;--hero:#292238;--hero-ink:#f8f6fb;--shadow:0 18px 48px rgba(31,23,42,.055)}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:100px}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}a:focus-visible,button:focus-visible{outline:3px solid #a694e8;outline-offset:4px}
+    button{font:inherit}::selection{background:#c9bff0;color:#21182e}
+    .wrap{max-width:1120px;margin:auto;padding:0 32px}
+    .site-header{position:sticky;top:0;z-index:20;background:rgba(247,246,243,.88);border-bottom:1px solid rgba(231,229,227,.8);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+    .nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+    .monogram{display:grid;place-items:center;width:43px;height:43px;border:1px solid #d7d3dc;border-radius:13px;font:700 17px 'Space Grotesk',sans-serif;letter-spacing:-1px;background:#fff}
+    .nav-links{display:flex;align-items:center;gap:31px}.nav-links a{font-size:13px;font-weight:650;color:#666371;transition:color .2s}.nav-links a:hover{color:var(--accent)}
+    .nav-right{display:flex;align-items:center;gap:10px}.social-icon{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;color:#554e62;border:1px solid #ded9e2;background:#fff;transition:background .2s,color .2s,transform .2s}.social-icon:hover{background:var(--accent-soft);color:var(--accent);transform:translateY(-2px)}.social-icon svg{height:19px;width:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .hero{padding-top:34px}
+    .hero-panel{position:relative;overflow:hidden;isolation:isolate;min-height:465px;border-radius:25px;padding:70px 70px 60px;background:radial-gradient(ellipse at 83% 23%,#57446f 0,transparent 39%),radial-gradient(ellipse at 42% 115%,#483254 0,transparent 47%),linear-gradient(130deg,#292238,#231c33 74%);color:var(--hero-ink);display:flex;align-items:center;justify-content:space-between;gap:36px}
+    .hero-panel:before{content:"";position:absolute;inset:auto -9% -80% 35%;height:115%;border:1px solid rgba(255,255,255,.10);border-radius:50%;transform:rotate(-20deg);z-index:-1;box-shadow:0 0 0 95px rgba(255,255,255,.018),0 0 0 190px rgba(255,255,255,.015)}
+    .hero-copy{max-width:670px;position:relative;z-index:2}.eyebrow{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#c7b9eb}.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:#bcabed}
+    h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:'Space Grotesk',sans-serif;letter-spacing:-.045em}
+    h1{font-size:clamp(55px,7vw,91px);line-height:1.025;margin:26px 0 25px;font-weight:600;letter-spacing:-.073em}
+    .hero-lead{font-size:clamp(17px,2vw,20px);line-height:1.6;color:#e3dce8;max-width:560px;margin:0 0 32px}
+    .hero-actions{display:flex;gap:15px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;border-radius:99px;padding:14px 20px;font-size:13px;font-weight:700;transition:transform .2s,background .2s}.btn:hover{transform:translateY(-2px)}.btn-primary{background:#f8f6fa;color:#30263e}.btn-primary:hover{background:#e9dff4}.btn-ghost{border:1px solid rgba(255,255,255,.27);color:#fff}.btn-ghost:hover{background:rgba(255,255,255,.07)}
+    .avatar-wrap{position:relative;flex:0 0 235px;height:245px;display:grid;place-items:center}.avatar-back{position:absolute;inset:17px 0 4px;border:1px solid rgba(255,255,255,.17);border-radius:50%;background:radial-gradient(circle at 48% 50%,rgba(191,163,215,.22),rgba(255,255,255,.025) 68%)}.avatar-wrap:after{content:"";position:absolute;inset:0 -13px -9px;border:1px solid rgba(255,255,255,.07);border-radius:50%}.avatar{width:238px;position:relative;z-index:1;filter:drop-shadow(0 15px 24px rgba(11,7,17,.2));object-fit:contain}
+    .quickline{display:flex;align-items:center;gap:15px;flex-wrap:wrap;padding:25px 5px;color:#77737e;font-size:13px}.quickline strong{font-weight:700;color:#35303e}.sep{width:4px;height:4px;border-radius:50%;background:#c4bdc8}
+    .section{padding:77px 0 11px}.section-heading{display:flex;align-items:end;justify-content:space-between;gap:26px;margin-bottom:28px}.overline{color:var(--accent);font-size:12px;letter-spacing:.13em;text-transform:uppercase;font-weight:800;margin-bottom:11px}.section-heading h2{font-size:clamp(30px,4vw,42px);font-weight:600;line-height:1.14;margin:0}.section-note{font-size:14px;color:var(--muted);max-width:370px;line-height:1.65;margin:0}
+    .about-grid{display:grid;grid-template-columns:1.35fr .8fr;gap:25px}.about-copy,.side-note,.project-card,.experience-card{background:var(--paper);border:1px solid var(--line);border-radius:19px;box-shadow:var(--shadow)}
+    .about-copy{padding:34px 37px}.about-copy p{line-height:1.85;font-size:15.5px;color:#55525d;margin:0 0 15px}.about-copy p:last-child{margin-bottom:0}.about-copy strong{color:#292531;font-weight:700}
+    .side-note{padding:32px;background:#edeaf2;border-color:#e5e1ed;display:flex;flex-direction:column;justify-content:space-between}.side-note .small-label{font-size:12px;color:#777084;font-weight:750;letter-spacing:.12em;text-transform:uppercase}.side-note h3{font-size:25px;line-height:1.2;margin:24px 0 16px;font-weight:600}.side-note p{font-size:14px;color:#665d70;line-height:1.75;margin:0}.small-arrow{font-size:25px;color:#897a9d;align-self:flex-end}
+    .projects-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.project-card{overflow:hidden;transition:transform .25s,box-shadow .25s}.project-card:hover{transform:translateY(-5px);box-shadow:0 24px 55px rgba(31,23,42,.1)}
+    .project-art{height:184px;position:relative;overflow:hidden;display:grid;place-items:center}.art-rib{background:#e8e8ea}.art-aircraft{background:#dfdfe9}.art-bike{background:#e8e6e1}.project-art svg{width:88%;height:90%;overflow:visible}.project-info{padding:25px 26px 27px}.project-category{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:#827493;margin-bottom:12px}.project-info h3{font-size:21px;font-weight:650;line-height:1.23;margin:0 0 10px}.project-info p{color:#77717d;line-height:1.7;font-size:13.5px;margin:0 0 18px}.tags{display:flex;gap:7px;flex-wrap:wrap}.tag{font-size:11px;color:#655e70;border:1px solid #e9e5e9;padding:6px 9px;border-radius:7px;background:#faf9fa}
+    .projects-footer{display:flex;justify-content:flex-start;margin-top:24px}.projects-more{display:inline-flex;align-items:center;gap:12px;padding:13px 18px;border:1px solid #d6cee2;border-radius:12px;color:#4f3f77;background:#eeebf7;font-size:13px;font-weight:750;transition:background .2s,transform .2s}.projects-more:hover{background:#e2dcef;transform:translateY(-2px)}
+    .experience-grid{display:grid;grid-template-columns:1fr;gap:20px}.experience-card{padding:29px 31px}.experience-card h3{font-size:17px;letter-spacing:-.03em;margin:0 0 9px}.experience-card p{font-size:13px;line-height:1.7;color:#756f79;margin:0}.exp-date{font-size:11px;color:#8c8492;text-transform:uppercase;letter-spacing:.09em;font-weight:800}.exp-item{display:grid;grid-template-columns:1fr auto;gap:12px 20px;padding:20px 0;border-bottom:1px solid var(--line)}.exp-item:first-of-type{padding-top:7px}.exp-item:last-of-type{border-bottom:none;padding-bottom:0}.exp-company{font-size:13px;color:#6f6976;margin:4px 0 0}.exp-date{text-align:right;padding-top:5px;white-space:nowrap}.experience-intro{margin-bottom:14px!important}
+    details.history{margin-top:20px;border-top:1px solid var(--line);padding-top:16px}summary{cursor:pointer;color:var(--accent);font-size:13px;font-weight:750;list-style:none}summary::-webkit-details-marker{display:none}summary::after{content:' +';margin-left:7px}details[open] summary::after{content:' −'}.older{padding-top:10px}.older p{font-size:13px;line-height:1.9}
+    .interest-block{border-top:1px solid #e3e1df;border-bottom:1px solid #e3e1df;padding:28px 0;display:grid;grid-template-columns:180px 1fr;gap:20px}.interest-block strong{font:600 18px 'Space Grotesk',sans-serif;letter-spacing:-.04em}.interest-block p{font-size:15px;color:#6b6570;line-height:1.8;margin:0}
+    .tool-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:25px}.tool-row span{background:#edeaf1;color:#595167;font-size:12px;font-weight:650;padding:9px 13px;border-radius:9px}.reading-card{display:flex;align-items:center;gap:18px;margin-top:24px;padding:21px 24px;background:#fff;border:1px solid var(--line);border-radius:17px;box-shadow:var(--shadow)}.reading-icon{display:grid;place-items:center;width:52px;height:58px;border-radius:10px;background:#eeebf7;color:#6553a1;flex-shrink:0}.reading-icon svg{width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.reading-label{font-size:11px;text-transform:uppercase;letter-spacing:.13em;font-weight:800;color:#847693;margin-bottom:6px}.reading-title{font:600 18px 'Space Grotesk',sans-serif;letter-spacing:-.035em;margin:0 0 3px}.reading-meta{font-size:13px;color:#77717d;margin:0}
+    .contact-panel{background:#292238;color:#fff;border-radius:23px;margin:80px 0 30px;padding:50px 55px;display:flex;align-items:center;justify-content:space-between;gap:25px}.contact-panel h2{font-size:34px;font-weight:600;margin:0 0 13px}.contact-panel p{font-size:14px;color:#cfc7d6;line-height:1.7;margin:0;max-width:530px}.contact-links{display:flex;gap:10px;flex-wrap:wrap}.contact-links a{font-size:13px;font-weight:700;padding:13px 18px;border:1px solid #756982;border-radius:99px;white-space:nowrap;transition:background .2s}.contact-links a:hover{background:#51445f}
+    footer{padding:0 0 33px;display:flex;gap:20px;align-items:center;justify-content:space-between;font-size:12px;color:#817b84}.footer-links{display:flex;gap:19px}.footer-links a:hover{color:#453a59}
+    @media(max-width:900px){.hero-panel{padding:57px 45px;min-height:410px}.avatar-wrap{flex-basis:180px;height:210px}.avatar{width:195px}.projects-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.projects-grid .project-card:last-child{grid-column:span 2}.projects-grid .project-card:last-child .project-art{height:205px}.about-grid{grid-template-columns:1.25fr .8fr}.experience-grid{grid-template-columns:1fr}.contact-panel{padding:42px;align-items:start;flex-direction:column}}
+    @media(max-width:640px){.wrap{padding:0 20px}.nav{height:68px}.nav-links{display:none}.social-icon{width:36px;height:36px}.nav-right{gap:7px}.hero{padding-top:16px}.hero-panel{padding:40px 29px 32px;min-height:auto;display:flex;flex-direction:column-reverse;align-items:flex-start;gap:13px;border-radius:20px}.avatar-wrap{height:117px;flex:unset;width:117px;align-self:flex-end;margin-bottom:-12px}.avatar-back{inset:1px}.avatar-wrap:after{display:none}.avatar{width:122px}h1{font-size:54px;margin:15px 0 18px}.hero-lead{font-size:16px;margin-bottom:24px}.hero-actions{gap:9px}.btn{padding:12px 15px;font-size:12px}.quickline{gap:11px;padding:19px 1px;font-size:12px}.section{padding:57px 0 0}.section-heading{display:block;margin-bottom:23px}.section-note{margin-top:14px}.about-grid,.projects-grid{grid-template-columns:1fr}.about-copy,.side-note{padding:26px}.side-note h3{font-size:23px}.projects-grid .project-card:last-child{grid-column:auto}.projects-grid .project-card:last-child .project-art{height:184px}.project-art{height:175px}.experience-card{padding:24px 22px}.interest-block{grid-template-columns:1fr;gap:10px}.contact-panel{margin-top:60px;padding:33px 28px}.contact-panel h2{font-size:29px}footer{align-items:flex-start;flex-direction:column;gap:13px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+  </style>
 </head>
 <body>
-
-<!-- Navbar -->
-<div class="navbar" id="navbar">
-    <div class="brand">DG</div>
-    <div class="social-links">
-        <a href="https://www.instagram.com/declang1505/" class="instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-        <a href="mailto:declangavin@icloud.com" class="email"><i class="fas fa-envelope"></i></a>
-        <a href="https://www.linkedin.com/in/declan-g-23538a166/" class="linkedin" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
-        <a href="https://good-opal-1db.notion.site/Projects-2debd07448ef80b4839fda76ea1358a5?source=copy_link" class="projects" target="_blank" rel="noopener noreferrer"><i class="fas fa-cog"></i></a>
-</a>
-
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="monogram" href="#top" aria-label="Dec Gavin, back to top">DG</a>
+      <nav class="nav-links" aria-label="Main navigation"><a href="#about">About</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#interests">Interests</a></nav>
+      <div class="nav-right">
+        <a class="social-icon" href="https://www.instagram.com/declang1505/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a class="social-icon" href="mailto:declangavin@icloud.com" aria-label="Email" title="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6 8.5 7 8.5-7"/></svg></a>
+        <a class="social-icon" href="https://www.linkedin.com/in/declan-g-23538a166/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="3"/><path d="M7.2 10v7M7.2 7v.15M11 17v-7h3v1.1c.5-.9 1.4-1.3 2.5-1.3 2 0 2.7 1.2 2.7 3.2V17"/></svg></a>
+      </div>
     </div>
-</div>
+  </header>
 
-<!-- Header -->
-<header>
-    <div class="text">
-        <h1>Dec Gavin</h1>
-        <p><strong>Aerospace Engineering Student from the South West.</strong></p>
-    </div>
-    <div class="profile-placeholder"><img src="memoji.png" alt="Profile Photo"></div>
-</header>
-
-<!-- About -->
-<section id="about">
-    <h2>About Me</h2>
-    <p>Hi, I’m Dec. I’m studying for a BEng in Aerospace Engineering at the University of the West of England, with a background in logistics and supply chain operations. Experienced in workflow optimization, inventory management, and supplier coordination, I’m passionate about applying these skills to a career in engineering.</p>
-</section>
-
-<!-- Skills -->
-<section id="skills">
-    <h2>Skills</h2>
-    <div class="bubble-list">
-        <span>HTML</span>
-        <span>CSS</span>
-        <span>JavaScript</span>
-        <span>Matlab</span>
-        <span>Solidworks</span>
-    </div>
-</section>
-
-<!-- Interests -->
-<section id="interests">
-    <h2>Interests</h2>
-    <div class="bubble-list">
-        <span>Morphing Wings</span>
-        <span>UAVs</span>
-        <span>Composites</span>
-        <span>Generative Design</span>
-        <span>3D Printing</span>
-    </div>
-</section>
-
-<!-- Career -->
-<section id="career">
-    <h2>Career</h2>
-    <p>Here's a brief overview of my career journey so far:</p>
-
-    <div class="career-item">
-        <h3>Cycle Technician</h3>
-        <div class="company">The Electric Bike Shop</div>
-        <div class="years">2024 - 2025</div>
-    </div>
-
-    <div class="dropdown-content" id="careerDropdown">
-        <div class="career-item">
-            <h3>Keyholder - Stockroom Supervisor</h3>
-            <div class="company">Levi Strauss & Co</div>
-            <div class="years">2023 - 2024</div>
+  <main id="top">
+    <div class="wrap hero">
+      <div class="hero-panel">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="dot" aria-hidden="true"></span> Hello, I'm Dec</div>
+          <h1>Dec Gavin<span style="color:#a999c4">.</span></h1>
+          <p class="hero-lead">Final-year Aerospace Engineering student at UWE Bristol, with an interest in structures, manufacturing and the practical side of engineering.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#projects">Selected projects <span aria-hidden="true">↗</span></a><a class="btn btn-ghost" href="#about">A bit about me <span aria-hidden="true">↓</span></a></div>
         </div>
-        <div class="career-item">
-            <h3>Storekeeper - Receipts and Dangerous Goods</h3>
-            <div class="company">UK Ministry of Defence</div>
-            <div class="years">2022 - 2023</div>
-        </div>
-        <div class="career-item">
-            <h3>Department Supervisor</h3>
-            <div class="company">Halfords Group</div>
-            <div class="years">2018 - 2022</div>
-        </div>
-        <div class="career-item">
-            <h3>Trainee IT Technician</h3>
-            <div class="company">Labyrinth IT Solutions</div>
-            <div class="years">2017</div>
-        </div>
+        <div class="avatar-wrap"><div class="avatar-back" aria-hidden="true"></div><img class="avatar" src="memoji.png" alt="Cartoon portrait of Dec wearing glasses" width="245" height="245"></div>
+      </div>
+      <div class="quickline"><strong>Bristol, UK</strong><span class="sep"></span><span>Aerospace Engineering BEng</span><span class="sep"></span><span>UWE Bristol · Class of 2027</span></div>
     </div>
 
-    <div class="center-button">
-        <button class="dropdown" onclick="toggleDropdown()" id="toggleButton">
-            Show More <i class="fas fa-caret-down"></i>
-        </button>
-    </div>
-    <div class="center-button" style="margin-top: 10px;">
-    <a class="dropdown"
-       href="https://good-opal-1db.notion.site/Projects-2debd07448ef80b4839fda76ea1358a5?source=copy_link"
-       target="_blank"
-       rel="noopener noreferrer"
-       style="text-decoration: none;">
-        Projects
-    </a>
-</div>
+    <section id="about" class="section wrap" aria-labelledby="about-title">
+      <div class="section-heading"><div><div class="overline">01 / Introduction</div><h2 id="about-title">A little about me</h2></div><p class="section-note"></p></div>
+      <div class="about-grid">
+        <div class="about-copy">
+          <p>I'm Dec, a final-year <strong>Aerospace Engineering student at UWE Bristol</strong>. I enjoy the practical side of engineering — designing, making and testing things.</p>
+          <p>I've worked in <strong>defence logistics, retail and bicycle maintenance</strong> alongside my studies. Outside university, you'll usually find me cycling, tinkering with bikes or 3D printing.</p>
+        </div>
+        <aside class="side-note"><div><div class="small-label">Currently</div><h3>Final year at UWE.</h3><p>Studying Aerospace Engineering and working part-time as a cycle mechanic.</p></div><span class="small-arrow" aria-hidden="true">↗</span></aside>
+      </div>
+    </section>
 
-</section>
+    <section id="projects" class="section wrap" aria-labelledby="projects-title">
+      <div class="section-heading"><div><div class="overline">02 / University work</div><h2 id="projects-title">Selected projects</h2></div><p class="section-note">A few completed projects from my degree.</p></div>
+      <div class="projects-grid">
+        <article class="project-card"><div class="project-art art-aircraft" aria-hidden="true">
+          <svg viewBox="0 0 360 200" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M34 125 Q180 42 323 118" stroke="#aaa7b6" stroke-width="2" stroke-dasharray="5 6"/><path d="M48 115 Q170 74 313 112 Q220 134 48 115Z" fill="#8b849f" fill-opacity=".17" stroke="#625c78" stroke-width="3"/><path d="M150 101L192 63L244 99L192 141Z" stroke="#777087" stroke-width="3" fill="#c8c4d3" fill-opacity=".45"/><path d="M192 63V141M150 101H244" stroke="#a5a0b5"/><circle cx="192" cy="103" r="9" fill="#f3f1f5" stroke="#6e6782" stroke-width="2"/><path d="M50 158H311M50 154V163M311 154V163" stroke="#aba6b6"/></svg>
+        </div><div class="project-info"><div class="project-category">University · Aircraft design</div><h3>UAV preliminary design</h3><p>Designed and analysed a small unmanned aircraft, covering aerodynamics, performance and flight characteristics.</p><div class="tags"><span class="tag">Aerodynamics</span><span class="tag">Performance</span></div></div></article>
+        <article class="project-card"><div class="project-art art-rib" aria-hidden="true">
+          <svg viewBox="0 0 360 200" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M55 106 Q158 49 304 99 Q199 130 55 106Z" fill="#9f97ae" fill-opacity=".27" stroke="#777087" stroke-width="3"/><path d="M84 66V149M125 58V147M166 55V143M208 59V142M249 70V142" stroke="#aca5b3" stroke-dasharray="3 5"/><path d="M38 156H319" stroke="#bab5c1"/><path d="M280 53L280 140M274 60L280 53L286 60" stroke="#777087" stroke-width="2"/><text x="31" y="39" fill="#8d859c" font-size="12" font-family="sans-serif">NACA 0012</text></svg>
+        </div><div class="project-info"><div class="project-category">University · Experimental aerodynamics</div><h3>Wind-tunnel testing</h3><p>Investigated the aerodynamic behaviour of a NACA 0012 aerofoil at different airspeeds and angles of attack.</p><div class="tags"><span class="tag">Wind tunnel</span><span class="tag">Data analysis</span></div></div></article>
+        <article class="project-card"><div class="project-art art-bike" aria-hidden="true">
+          <svg viewBox="0 0 360 200" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M43 148H316M57 44V148M57 44H310" stroke="#b9b5c0" stroke-width="2"/><path d="M65 128C88 117 107 111 130 107S176 97 199 90S254 65 300 57" stroke="#645e78" stroke-width="4" stroke-linecap="round"/><path d="M65 137C93 129 115 116 140 119S188 108 210 103S255 79 300 74" stroke="#a69db5" stroke-width="2.5" stroke-dasharray="6 5"/><text x="57" y="35" fill="#8d859c" font-size="12" font-family="sans-serif">Rate of climb</text><text x="265" y="167" fill="#8d859c" font-size="11" font-family="sans-serif">Altitude</text></svg>
+        </div><div class="project-info"><div class="project-category">University · Flight performance</div><h3>Aircraft climb analysis</h3><p>Used MATLAB to analyse climb performance data and compare calculated results with aircraft performance information.</p><div class="tags"><span class="tag">MATLAB</span><span class="tag">Flight mechanics</span></div></div></article>
+      </div>
+      <div class="projects-footer"><a class="projects-more" href="https://good-opal-1db.notion.site/Projects-2debd07448ef80b4839fda76ea1358a5?source=copy_link" target="_blank" rel="noopener noreferrer">See more of my work <span aria-hidden="true">↗</span></a></div>
+    </section>
 
-<!-- Footer -->
-<footer style="padding: 10px 20px; max-width: 1000px; margin: 0 auto; color: #fff; font-family: 'Roboto', sans-serif; text-align: left;">
-    &copy; Dec Gavin - 2025
-</footer>
+    <section id="experience" class="section wrap" aria-labelledby="experience-title">
+      <div class="section-heading"><div><div class="overline">03 / Background</div><h2 id="experience-title">Experience</h2></div><p class="section-note"></p></div>
+      <div class="experience-grid">
+        <div class="experience-card"><p class="experience-intro">Work</p>
+          <div class="exp-item"><div><h3>Cycle Mechanic</h3><p class="exp-company">Giant / Liv retailer</p></div><div class="exp-date">2026 – Present</div></div>
+          <div class="exp-item"><div><h3>Cycle Technician</h3><p class="exp-company">The Electric Bike Shop</p></div><div class="exp-date">2024 – 2025</div></div>
+          <div class="exp-item"><div><h3>Keyholder / Stockroom Supervisor</h3><p class="exp-company">Levi Strauss &amp; Co.</p></div><div class="exp-date">2023 – 2024</div></div>
+          <div class="exp-item"><div><h3>Storekeeper — Receipts &amp; Dangerous Goods</h3><p class="exp-company">UK Ministry of Defence · RNAS Yeovilton</p></div><div class="exp-date">2022 – 2023</div></div>
+          <details class="history"><summary>Earlier roles</summary><div class="older"><p><strong>Department Supervisor</strong> · Halfords Group · 2018–2022<br><strong>Trainee IT Technician</strong> · Labyrinth IT Solutions · 2017</p></div></details>
+        </div>
+        <div class="experience-card"><p class="experience-intro">Study &amp; volunteering</p>
+          <div class="exp-item"><div><h3>BEng Aerospace Engineering</h3><p class="exp-company">University of the West of England, Bristol</p></div><div class="exp-date">Graduating 2027</div></div>
+          <div class="exp-item"><div><h3>Adult Volunteer Instructor</h3><p class="exp-company">Royal Marines Cadets</p></div><div class="exp-date">2020 – Present</div></div>
+          
+        </div>
+      </div>
+    </section>
 
-<script>
-window.addEventListener("scroll", function() {
-    var navbar = document.getElementById("navbar");
-    navbar.classList.toggle("transparent", window.scrollY > 0);
-});
+    <section id="interests" class="section wrap" aria-labelledby="interests-title">
+      <div class="section-heading"><div><div class="overline">04 / Outside the classroom</div><h2 id="interests-title">Interests &amp; tools</h2></div></div>
+      <div class="interest-block"><strong>Engineering</strong><p>Aircraft design, materials, additive manufacturing and practical problem-solving.</p></div>
+      <div class="interest-block"><strong>Beyond engineering</strong><p>Cycling, running, bicycle mechanics, 3D printing and cadet volunteering.</p></div>
+      <div class="tool-row" aria-label="Software and tools I've used"><span>SolidWorks</span><span>ANSYS</span><span>MATLAB</span><span>3D printing / FDM</span><span>CAD &amp; prototyping</span><span>HTML / CSS / JavaScript</span></div>
+      <div class="reading-card"><div class="reading-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 6c-2.4-1.4-5.7-1.6-9-1v14c3.3-.6 6.6-.4 9 1 2.4-1.4 5.7-1.6 9-1V5c-3.3-.6-6.6-.4-9 1Z"/><path d="M12 6v14"/></svg></div><div><div class="reading-label">Currently reading</div><h3 class="reading-title">Bicycling Science</h3><p class="reading-meta">3rd Edition</p></div></div>
+    </section>
 
-function toggleDropdown() {
-    var dropdown = document.getElementById("careerDropdown");
-    var button = document.getElementById("toggleButton");
-    var isExpanded = dropdown.classList.toggle("show");
-    button.innerHTML = isExpanded 
-        ? 'Show Less <i class="fas fa-caret-up"></i>' 
-        : 'Show More <i class="fas fa-caret-down"></i>';
-}
-
-/* iOS Chrome / Safari bottom bar fix */
-(function() {
-  if (window.visualViewport) {
-    const updateHeight = () => {
-      document.documentElement.style.setProperty('--vvh', window.visualViewport.height + 'px');
-    };
-    updateHeight();
-    window.visualViewport.addEventListener('resize', updateHeight);
-    window.visualViewport.addEventListener('scroll', updateHeight);
-  }
-})();
-</script>
-
+    <div class="wrap"><section class="contact-panel" aria-labelledby="contact-title"><div><div class="overline" style="color:#baabcf">05 / Say hello</div><h2 id="contact-title">Get in touch.</h2><p>Feel free to get in touch.</p></div><div class="contact-links"><a href="mailto:declangavin@icloud.com">Email ↗</a><a href="https://www.linkedin.com/in/declan-g-23538a166/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div></section></div>
+  </main>
+  <footer class="wrap"><span>© <span id="year">2026</span> Dec Gavin · Built with HTML &amp; CSS</span><div class="footer-links"><a href="https://www.instagram.com/declang1505/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="#top">Back to top ↑</a></div></footer>
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
 </html>
