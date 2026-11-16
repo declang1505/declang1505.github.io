@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7f6f3">
-  <meta name="description" content="Dec Gavin — final-year Aerospace Engineering student at UWE Bristol. Engineering projects, experience and interests.">
-  <title>Dec Gavin — Aerospace Engineering Student</title>
+  <meta name="description" content="Design and engineering projects by Dec Gavin.">
+  <title>Projects — Dec Gavin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -49,13 +49,26 @@
     @media(max-width:900px){.hero-panel{padding:57px 45px;min-height:410px}.avatar-wrap{flex-basis:180px;height:210px}.avatar{width:195px}.projects-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.projects-grid .project-card:last-child{grid-column:span 2}.about-grid{grid-template-columns:1.25fr .8fr}.experience-grid{grid-template-columns:1fr}.contact-panel{padding:42px;align-items:start;flex-direction:column}}
     @media(max-width:640px){.wrap{padding:0 20px}.nav{height:68px}.nav-links{display:none}.social-icon{width:36px;height:36px}.nav-right{gap:7px}.hero{padding-top:16px}.hero-panel{padding:40px 29px 32px;min-height:auto;display:flex;flex-direction:column-reverse;align-items:flex-start;gap:13px;border-radius:20px}.avatar-wrap{height:117px;flex:unset;width:117px;align-self:flex-end;margin-bottom:-12px}.avatar-back{inset:1px}.avatar-wrap:after{display:none}.avatar{width:122px}h1{font-size:54px;margin:15px 0 18px}.hero-lead{font-size:16px;margin-bottom:24px}.hero-actions{gap:9px}.btn{padding:12px 15px;font-size:12px}.quickline{gap:11px;padding:19px 1px;font-size:12px}.section{padding:57px 0 0}.section-heading{display:block;margin-bottom:23px}.section-note{margin-top:14px}.about-grid,.projects-grid{grid-template-columns:1fr}.about-copy,.side-note{padding:26px}.side-note h3{font-size:23px}.projects-grid .project-card:last-child{grid-column:auto}.experience-card{padding:24px 22px}.interest-block{grid-template-columns:1fr;gap:10px}.contact-panel{margin-top:60px;padding:33px 28px}.contact-panel h2{font-size:29px}footer{align-items:flex-start;flex-direction:column;gap:13px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
-  </style>
+  
+
+    .archive-intro{padding:66px 0 30px}
+    .archive-intro h1{font-size:clamp(46px,6vw,76px);color:var(--ink);margin:12px 0 14px;letter-spacing:-.065em}
+    .archive-intro p{max-width:660px;font-size:16px;line-height:1.8;color:var(--muted)}
+    .back-link{display:inline-flex;align-items:center;gap:9px;color:var(--accent);font-size:13px;font-weight:750}
+    .embed-shell{background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:20px;overflow:hidden;margin-bottom:60px}
+    .embed-toolbar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:17px 24px;border-bottom:1px solid var(--line);font-size:13px;color:var(--muted)}
+    .embed-toolbar strong{color:var(--ink);font-weight:700}
+    .embed-toolbar a{color:var(--accent);font-weight:750}
+    .embed-frame{display:block;width:100%;height:1000px;border:0;background:#fff}
+    .embed-help{font-size:12px;color:var(--muted);padding:0 24px 18px}
+    @media(max-width:700px){.archive-intro{padding-top:43px}.embed-frame{height:850px}.embed-toolbar{padding:15px 18px}.embed-help{padding:0 18px 16px}}
+</style>
 </head>
 <body>
   <header class="site-header">
     <div class="wrap nav">
-      <a class="monogram" href="#top" aria-label="Dec Gavin, back to top">DG</a>
-      <nav class="nav-links" aria-label="Main navigation"><a href="#about">About</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#interests">Interests</a></nav>
+      <a class="monogram" href="../" aria-label="Dec Gavin, back to top">DG</a>
+      <nav class="nav-links" aria-label="Main navigation"><a href="../#about">About</a><a href="../#projects">Projects</a><a href="../#experience">Experience</a><a href="../#interests">Interests</a></nav>
       <div class="nav-right">
         <a class="social-icon" href="https://www.instagram.com/declang1505/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
         <a class="social-icon" href="mailto:declangavin@icloud.com" aria-label="Email" title="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6 8.5 7 8.5-7"/></svg></a>
@@ -63,69 +76,20 @@
       </div>
     </div>
   </header>
-
   <main id="top">
-    <div class="wrap hero">
-      <div class="hero-panel">
-        <div class="hero-copy">
-          <div class="eyebrow"><span class="dot" aria-hidden="true"></span> Hello, I'm Dec</div>
-          <h1>Dec Gavin<span style="color:#a999c4">.</span></h1>
-          <p class="hero-lead">Final-year Aerospace Engineering student at UWE Bristol, with an interest in structures, manufacturing and the practical side of engineering.</p>
-          <div class="hero-actions"><a class="btn btn-primary" href="#projects">Selected projects <span aria-hidden="true">↗</span></a><a class="btn btn-ghost" href="#about">A bit about me <span aria-hidden="true">↓</span></a></div>
-        </div>
-        <div class="avatar-wrap"><div class="avatar-back" aria-hidden="true"></div><img class="avatar" src="memoji.png" alt="Cartoon portrait of Dec wearing glasses" width="245" height="245"></div>
-      </div>
-      <div class="quickline"><strong>Bristol, UK</strong><span class="sep"></span><span>Aerospace Engineering BEng</span><span class="sep"></span><span>UWE Bristol · Class of 2027</span></div>
+    <div class="wrap">
+      <section class="archive-intro" aria-labelledby="archive-title">
+        <a class="back-link" href="../">← Back to homepage</a>
+        <div class="overline" style="margin-top:30px">Portfolio / Project archive</div>
+        <h1 id="archive-title">Projects<span style="color:var(--accent)">.</span></h1>
+        <p>A collection of university and personal projects. Dates, tools and further details are included with each project.</p>
+      </section>
+      <section class="embed-shell" aria-label="Notion design project archive">
+        <div class="embed-toolbar"><strong>Design projects</strong><a href="https://good-opal-1db.notion.site/Design-Projects-2debd07448ef80b4839fda76ea1358a5" target="_blank" rel="noopener noreferrer">Open in Notion ↗</a></div>
+        <iframe class="embed-frame" src="https://good-opal-1db.notion.site/ebd/2debd07448ef80b4839fda76ea1358a5" title="Dec Gavin's design projects on Notion" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <p class="embed-help">If the project gallery doesn't load, <a href="https://good-opal-1db.notion.site/Design-Projects-2debd07448ef80b4839fda76ea1358a5" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:700">view it directly on Notion ↗</a>.</p>
+      </section>
     </div>
-
-    <section id="about" class="section wrap" aria-labelledby="about-title">
-      <div class="section-heading"><div><div class="overline">01 / Introduction</div><h2 id="about-title">A little about me</h2></div><p class="section-note"></p></div>
-      <div class="about-grid">
-        <div class="about-copy">
-          <p>I'm Dec, a final-year <strong>Aerospace Engineering student at UWE Bristol</strong>. I enjoy the practical side of engineering — designing, making and testing things.</p>
-          <p>I've worked in <strong>defence logistics, retail and bicycle maintenance</strong> alongside my studies. Outside university, you'll usually find me cycling, tinkering with bikes or 3D printing.</p>
-        </div>
-        <aside class="side-note"><div><div class="small-label">Currently</div><h3>Final year at UWE.</h3><p>Studying Aerospace Engineering and working part-time as a cycle mechanic.</p></div><span class="small-arrow" aria-hidden="true">↗</span></aside>
-      </div>
-    </section>
-
-    <section id="projects" class="section wrap" aria-labelledby="projects-title">
-      <div class="section-heading"><div><div class="overline">02 / University work</div><h2 id="projects-title">Selected projects</h2></div><p class="section-note">A few completed projects from my degree.</p></div>
-      <div class="projects-grid">
-        <article class="project-card"><div class="project-info"><div class="project-category">University · Aircraft design</div><h3>UAV preliminary design</h3><p>Designed and analysed a small unmanned aircraft, covering aerodynamics, performance and flight characteristics.</p><div class="tags"><span class="tag">Aerodynamics</span><span class="tag">Performance</span></div></div></article>
-        <article class="project-card"><div class="project-info"><div class="project-category">University · Experimental aerodynamics</div><h3>Wind-tunnel testing</h3><p>Investigated the aerodynamic behaviour of a NACA 0012 aerofoil at different airspeeds and angles of attack.</p><div class="tags"><span class="tag">Wind tunnel</span><span class="tag">Data analysis</span></div></div></article>
-        <article class="project-card"><div class="project-info"><div class="project-category">University · Flight performance</div><h3>Aircraft climb analysis</h3><p>Used MATLAB to analyse climb performance data and compare calculated results with aircraft performance information.</p><div class="tags"><span class="tag">MATLAB</span><span class="tag">Flight mechanics</span></div></div></article>
-      </div>
-      <div class="projects-footer"><a class="projects-more" href="https://good-opal-1db.notion.site/Projects-2debd07448ef80b4839fda76ea1358a5?source=copy_link" target="_blank" rel="noopener noreferrer">See more of my work <span aria-hidden="true">↗</span></a></div>
-    </section>
-
-    <section id="experience" class="section wrap" aria-labelledby="experience-title">
-      <div class="section-heading"><div><div class="overline">03 / Background</div><h2 id="experience-title">Experience</h2></div><p class="section-note"></p></div>
-      <div class="experience-grid">
-        <div class="experience-card"><p class="experience-intro">Work</p>
-          <div class="exp-item"><div><h3>Cycle Mechanic</h3><p class="exp-company">Giant / Liv retailer</p></div><div class="exp-date">2026 – Present</div></div>
-          <div class="exp-item"><div><h3>Cycle Technician</h3><p class="exp-company">The Electric Bike Shop</p></div><div class="exp-date">2024 – 2025</div></div>
-          <div class="exp-item"><div><h3>Keyholder / Stockroom Supervisor</h3><p class="exp-company">Levi Strauss &amp; Co.</p></div><div class="exp-date">2023 – 2024</div></div>
-          <div class="exp-item"><div><h3>Storekeeper — Receipts &amp; Dangerous Goods</h3><p class="exp-company">UK Ministry of Defence · RNAS Yeovilton</p></div><div class="exp-date">2022 – 2023</div></div>
-          <details class="history"><summary>Earlier roles</summary><div class="older"><p><strong>Department Supervisor</strong> · Halfords Group · 2018–2022<br><strong>Trainee IT Technician</strong> · Labyrinth IT Solutions · 2017</p></div></details>
-        </div>
-        <div class="experience-card"><p class="experience-intro">Study &amp; volunteering</p>
-          <div class="exp-item"><div><h3>BEng Aerospace Engineering</h3><p class="exp-company">University of the West of England, Bristol</p></div><div class="exp-date">Graduating 2027</div></div>
-          <div class="exp-item"><div><h3>Adult Volunteer Instructor</h3><p class="exp-company">Royal Marines Cadets</p></div><div class="exp-date">2020 – Present</div></div>
-          
-        </div>
-      </div>
-    </section>
-
-    <section id="interests" class="section wrap" aria-labelledby="interests-title">
-      <div class="section-heading"><div><div class="overline">04 / Outside the classroom</div><h2 id="interests-title">Interests &amp; tools</h2></div></div>
-      <div class="interest-block"><strong>Engineering</strong><p>Aircraft design, materials, additive manufacturing and practical problem-solving.</p></div>
-      <div class="interest-block"><strong>Beyond engineering</strong><p>Cycling, running, bicycle mechanics, 3D printing and cadet volunteering.</p></div>
-      <div class="tool-row" aria-label="Software and tools I've used"><span>SolidWorks</span><span>ANSYS</span><span>MATLAB</span><span>3D printing / FDM</span><span>CAD &amp; prototyping</span><span>HTML / CSS / JavaScript</span></div>
-      <a class="reading-card" href="https://www.amazon.co.uk/Bicycling-Science-Press-Gordon-Wilson/dp/0262538407" target="_blank" rel="noopener noreferrer" aria-label="Bicycling Science, 3rd Edition — view book on Amazon"><div class="reading-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 6c-2.4-1.4-5.7-1.6-9-1v14c3.3-.6 6.6-.4 9 1 2.4-1.4 5.7-1.6 9-1V5c-3.3-.6-6.6-.4-9 1Z"/><path d="M12 6v14"/></svg></div><div><div class="reading-label">Currently reading</div><h3 class="reading-title">Bicycling Science</h3><p class="reading-meta">3rd Edition · View on Amazon ↗</p></div></a>
-    </section>
-
-    <div class="wrap"><section class="contact-panel" aria-labelledby="contact-title"><div><div class="overline" style="color:#baabcf">05 / Say hello</div><h2 id="contact-title">Get in touch.</h2><p>Feel free to get in touch.</p></div><div class="contact-links"><a href="mailto:declangavin@icloud.com">Email ↗</a><a href="https://www.linkedin.com/in/declan-g-23538a166/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div></section></div>
   </main>
   <footer class="wrap"><span>© <span id="year">2026</span> Dec Gavin · Built with HTML &amp; CSS</span><div class="footer-links"><a href="https://www.instagram.com/declang1505/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="#top">Back to top ↑</a></div></footer>
   <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
