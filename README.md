@@ -30,3 +30,13 @@ V11: Improved mobile vertical spacing. Homepage latest project cards are embedde
 
 
 V12: Fixed mobile horizontal gutter disappearing on homepage sections. The `.section` padding shorthand was overriding the `.wrap` left/right padding; replaced with `padding-block` on all HTML pages.
+
+
+### V13 – Xperia project refresh
+Replaced the Xperia enclosure project photography with user-supplied originals in `projects/images/xa2-*`, updated its original Notion sections, added image captions, and displayed images as large full-width figures on its project detail page. Other projects are unchanged.
+
+
+### V14 – Render backgrounds and section dividers
+- Removed the unneeded horizontal divider above Overview and other project section headings on every project detail page.
+- Reprocessed the three Xperia enclosure CG renders to remove low-opacity noisy background pixels and flatten them onto a consistent light-grey background; the originals were provided in the previous turn. This is an image-processing fix, not a new rendering of the CAD.
+- Updated the image references in projects/data.js.
